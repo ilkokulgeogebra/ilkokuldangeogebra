@@ -43,3 +43,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// Geri Bildirim Formu Mantığı
+document.addEventListener('DOMContentLoaded', () => {
+    const meslekSelect = document.getElementById('meslek');
+    const adayGrup = document.getElementById('aday-sinif-group');
+    const ogretmenGrup = document.getElementById('ogretmen-sinif-group');
+    const adaySelect = document.getElementById('aday-sinif');
+    const ogretmenSelect = document.getElementById('ogretmen-sinif');
+
+    if (meslekSelect) {
+        meslekSelect.addEventListener('change', function() {
+            // Önce ikisini de gizle ve zorunluluğu kaldır
+            adayGrup.style.display = 'none';
+            ogretmenGrup.style.display = 'none';
+            adaySelect.removeAttribute('required');
+            ogretmenSelect.removeAttribute('required');
+
+            if (this.value === 'Öğretmen Adayı (Öğrenci)') {
+                adayGrup.style.display = 'block';
+                adaySelect.setAttribute('required', 'required');
+            } else if (this.value === 'Sınıf Öğretmeni (Aktif)') {
+                ogretmenGrup.style.display = 'block';
+                ogretmenSelect.setAttribute('required', 'required');
+            }
+        });
+    }
+});

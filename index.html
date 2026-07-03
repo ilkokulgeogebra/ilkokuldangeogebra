@@ -218,6 +218,67 @@
         </div>
     </section>
 
+    <!-- Geri Bildirim Formu -->
+    <section id="geribildirim" class="feedback-section section-padding bg-light">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-heading">GÖRÜŞLERİNİZ BİZİM İÇİN DEĞERLİ</span>
+                <h2 class="section-title">Geri Bildirim Formu</h2>
+                <p class="section-subtitle">Sitemizi ve etkinliklerimizi nasıl buldunuz? Lütfen bizimle paylaşın.</p>
+            </div>
+            
+            <div class="form-container">
+                <form action="https://formsubmit.co/geogebra735@gmail.com" method="POST" class="feedback-form">
+                    <!-- FormSubmit ayarları -->
+                    <input type="hidden" name="_subject" value="Siteden Yeni Bir Geri Bildirim Geldi!">
+                    <input type="text" name="_honey" style="display:none">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <!-- Başarılı gönderim sayfası (ayarlamazsak default sayfaya gider, bu yüzden sitenin kendisine dönsün) -->
+                    <input type="hidden" name="_next" value="https://ilkokulgeogebra.github.io/ilkokuldangeogebra/">
+
+                    <div class="form-group">
+                        <label for="meslek">Mesleki Durumunuz <span class="required">*</span></label>
+                        <select name="Meslek" id="meslek" required>
+                            <option value="">Lütfen Seçiniz</option>
+                            <option value="Öğretmen Adayı (Öğrenci)">Öğretmen Adayı (Öğrenci)</option>
+                            <option value="Sınıf Öğretmeni (Aktif)">Sınıf Öğretmeni (Aktif)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="aday-sinif-group" style="display: none;">
+                        <label for="aday-sinif">Kaçıncı Sınıf Öğrencisisiniz?</label>
+                        <select name="Öğrenci_Sınıfı" id="aday-sinif">
+                            <option value="">Seçiniz</option>
+                            <option value="1. Sınıf">1. Sınıf</option>
+                            <option value="2. Sınıf">2. Sınıf</option>
+                            <option value="3. Sınıf">3. Sınıf</option>
+                            <option value="4. Sınıf">4. Sınıf</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="ogretmen-sinif-group" style="display: none;">
+                        <label for="ogretmen-sinif">Şu An Kaçıncı Sınıfı Okutuyorsunuz?</label>
+                        <select name="Okutulan_Sınıf" id="ogretmen-sinif">
+                            <option value="">Seçiniz</option>
+                            <option value="1. Sınıf">1. Sınıf</option>
+                            <option value="2. Sınıf">2. Sınıf</option>
+                            <option value="3. Sınıf">3. Sınıf</option>
+                            <option value="4. Sınıf">4. Sınıf</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mesaj">Görüş ve Önerileriniz <span class="required">*</span></label>
+                        <textarea name="Mesaj" id="mesaj" rows="5" placeholder="GeoGebra etkinlikleri ve proje hakkındaki düşüncelerinizi buraya yazabilirsiniz..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary submit-btn"><i class="fa-solid fa-paper-plane"></i> Gönder</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">

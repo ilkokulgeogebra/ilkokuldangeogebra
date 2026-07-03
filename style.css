@@ -207,6 +207,60 @@ ul { list-style: none; }
     max-width: 800px;
 }
 
+/* Geri Bildirim Formu */
+.feedback-section {
+    background-color: #f8f9fa;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.feedback-form .form-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.feedback-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--primary-dark);
+}
+
+.feedback-form .required {
+    color: #e74c3c;
+}
+
+.feedback-form select,
+.feedback-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.feedback-form select:focus,
+.feedback-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.feedback-form .submit-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 1.1rem;
+    padding: 12px;
+}
+
 .hero-badge {
     display: inline-block;
     background: rgba(255,255,255,0.2);
