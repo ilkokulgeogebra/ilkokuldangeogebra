@@ -186,7 +186,7 @@ ul { list-style: none; }
 /* Hero / Karşılama Bölümü */
 .hero {
     position: relative;
-    padding: 160px 0 100px;
+    padding: 110px 0 100px;
     background: linear-gradient(135deg, var(--primary-color), #003d82);
     color: var(--white);
     text-align: center;
