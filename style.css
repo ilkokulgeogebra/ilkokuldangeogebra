@@ -784,7 +784,7 @@ ul { list-style: none; }
     }
     .mobile-menu-btn { display: block; }
     .nav .nav-links {
-        display: none;
+        display: none !important;
         position: absolute;
         top: 70px;
         left: 0;
@@ -796,7 +796,7 @@ ul { list-style: none; }
         z-index: 1000;
         gap: 15px;
     }
-    .nav .nav-links.active { display: flex; }
+    .nav .nav-links.active { display: flex !important; }
     .nav .nav-links li { margin-left: 0 !important; }
     .hero { padding: 100px 0; }
     .hero h2 { font-size: 28px; }
