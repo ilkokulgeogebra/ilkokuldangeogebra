@@ -169,32 +169,6 @@ ul { list-style: none; }
     overflow: hidden;
 }
 
-.hero-logos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-    z-index: 2;
-    position: relative;
-}
-
-.hero-logos img {
-    height: 85px;
-    background-color: var(--white);
-    padding: 10px 15px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    object-fit: contain;
-}
-
-.hero-logos img:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-}
-
 .hero-bg-shapes {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
