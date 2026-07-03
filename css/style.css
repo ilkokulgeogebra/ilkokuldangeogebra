@@ -1,0 +1,497 @@
+/* Temel Değişkenler ve Ayarlar */
+:root {
+    --primary-color: #2563eb; /* Modern mavi */
+    --primary-dark: #1e40af;
+    --secondary-color: #f59e0b; /* Sıcak turuncu/sarı */
+    --text-main: #1f2937;
+    --text-muted: #4b5563;
+    --bg-light: #f3f4f6;
+    --bg-dark: #111827;
+    --white: #ffffff;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --border-radius: 16px;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    background-color: var(--white);
+    line-height: 1.7;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section-padding { padding: 100px 0; }
+.bg-light { background-color: var(--bg-light); }
+.bg-dark { background-color: var(--bg-dark); }
+.text-white { color: var(--white); }
+.text-center { text-align: center; }
+
+/* Tipografi & Başlıklar */
+.sub-heading {
+    display: inline-block;
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 24px;
+}
+.bg-dark .section-title { color: var(--white); }
+
+.section-subtitle {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 50px;
+}
+
+/* Header & Navigasyon */
+.header {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+.logo span { color: var(--secondary-color); }
+
+.nav ul {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.nav a {
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: var(--transition);
+    font-size: 15px;
+}
+.nav a:hover { color: var(--primary-color); }
+.nav .nav-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+.nav .nav-btn:hover { background-color: var(--primary-dark); color: white; }
+
+/* Butonlar */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: var(--transition);
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4);
+}
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 25px -5px rgba(245, 158, 11, 0.5);
+    background-color: #d97706;
+}
+
+.btn-outline-white {
+    background-color: transparent;
+    color: var(--white);
+    border-color: rgba(255,255,255,0.5);
+}
+.btn-outline-white:hover {
+    background-color: var(--white);
+    color: var(--primary-color);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: var(--white);
+    padding: 140px 0 120px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-bg-shapes {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0.1;
+    background-image: radial-gradient(circle at 20% 30%, white 2px, transparent 2px), radial-gradient(circle at 80% 70%, white 2px, transparent 2px);
+    background-size: 100px 100px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(5px);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.hero h2 {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.hero-subtitle {
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--secondary-color);
+    margin-bottom: 24px;
+}
+
+.hero-desc {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 40px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+/* Proje Ekibi (Team) */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.team-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #e5e7eb;
+    transition: var(--transition);
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.team-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--bg-light);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 20px;
+}
+
+.advisor .team-icon { background: rgba(37, 99, 235, 0.1); }
+.principal .team-icon { background: rgba(245, 158, 11, 0.1); color: var(--secondary-color); }
+
+.team-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.team-card .role { font-size: 14px; color: var(--primary-color); font-weight: 600; margin-bottom: 8px; }
+.team-card .inst { font-size: 13px; color: var(--text-muted); }
+
+/* Proje Özeti */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-text-content p {
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.keywords {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.keyword {
+    background: var(--white);
+    border: 1px solid #d1d5db;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.about-stats {
+    display: grid;
+    gap: 24px;
+}
+
+.stat-box {
+    background: var(--white);
+    padding: 32px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--secondary-color);
+}
+
+.stat-box i {
+    font-size: 32px;
+    color: var(--primary-color);
+    margin-bottom: 16px;
+}
+.stat-box h4 { font-size: 20px; margin-bottom: 8px; }
+.stat-box p { color: var(--text-muted); font-size: 15px; }
+
+/* Özgün Değer (Detaylar) */
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 40px;
+}
+
+.detail-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    box-shadow: var(--shadow-sm);
+    border-top: 4px solid var(--primary-color);
+}
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+.detail-card h3 { font-size: 24px; margin-bottom: 16px; }
+.detail-card p { color: var(--text-muted); margin-bottom: 16px; }
+
+.custom-list li {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    color: var(--text-muted);
+}
+.custom-list i { color: var(--secondary-color); margin-top: 5px; }
+
+/* Yöntem ve Etki */
+.method-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.method-content h2, .impact-content h2 { margin-bottom: 24px; }
+.method-content p { color: #d1d5db; margin-bottom: 40px; font-size: 18px; }
+
+.timeline {
+    border-left: 2px solid rgba(255,255,255,0.2);
+    padding-left: 24px;
+    margin-left: 12px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 32px;
+}
+
+.timeline-item .dot {
+    position: absolute;
+    left: -41px;
+    top: -4px;
+    width: 32px;
+    height: 32px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+}
+
+.timeline-item p { margin-bottom: 0; font-weight: 500; color: white; }
+
+.impact-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.impact-card i {
+    font-size: 32px;
+    color: var(--secondary-color);
+}
+
+.impact-card h4 { margin-bottom: 8px; }
+.impact-card p { color: #9ca3af; font-size: 14px; margin: 0; }
+
+/* Etkinlikler Grid */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.activity-card {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+}
+
+.activity-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-image-placeholder {
+    height: 180px;
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+}
+
+.card-content {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-grade {
+    display: inline-block;
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    align-self: flex-start;
+}
+
+.card-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); }
+.card-desc { font-size: 15px; color: var(--text-muted); margin-bottom: 24px; flex-grow: 1; }
+
+/* Footer */
+.footer {
+    background-color: #0f172a;
+    color: #94a3b8;
+    padding: 60px 0 40px;
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 16px;
+}
+.footer-logo span { color: var(--secondary-color); }
+.copyright { margin-top: 30px; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+
+/* Responsive */
+@media (max-width: 992px) {
+    .about-grid, .details-grid, .method-grid { grid-template-columns: 1fr; }
+    .hero h2 { font-size: 40px; }
+}
+
+@media (max-width: 768px) {
+    .nav ul { display: none; } /* Mobil menü basit tutuldu */
+    .hero { padding: 100px 0; }
+    .hero-buttons { flex-direction: column; }
+    .section-padding { padding: 60px 0; }
+}
