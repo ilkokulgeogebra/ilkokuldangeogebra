@@ -721,15 +721,79 @@ ul { list-style: none; }
 .footer-logo span { color: var(--secondary-color); }
 .copyright { margin-top: 30px; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 
+/* Hero Logos Default Styles */
+.hero-logos {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+}
+.hero-logos img {
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+    background: white;
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+/* Mobile Menu Button Default */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-main);
+    cursor: pointer;
+}
+
 /* Responsive */
 @media (max-width: 992px) {
     .about-grid, .details-grid, .method-grid { grid-template-columns: 1fr; }
     .hero h2 { font-size: 40px; }
+    .report-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .report-menu {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        white-space: nowrap;
+        border-right: none;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    .report-menu .tab-btn {
+        margin-bottom: 0;
+        margin-right: 10px;
+        flex: 0 0 auto;
+    }
 }
 
 @media (max-width: 768px) {
-    .nav ul { display: none; } /* Mobil menü basit tutuldu */
+    .mobile-menu-btn { display: block; }
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        z-index: 1000;
+        gap: 15px;
+    }
+    .nav-links.active { display: flex; }
+    .nav-links li { margin-left: 0 !important; }
     .hero { padding: 100px 0; }
+    .hero h2 { font-size: 32px; }
     .hero-buttons { flex-direction: column; }
+    .hero-logos { gap: 20px; }
+    .hero-logos img { height: 100px; width: 100px; }
     .section-padding { padding: 60px 0; }
 }
