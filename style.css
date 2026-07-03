@@ -774,6 +774,14 @@ ul { list-style: none; }
 }
 
 @media (max-width: 768px) {
+    .header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo {
+        font-size: 20px;
+    }
     .mobile-menu-btn { display: block; }
     .nav-links {
         display: none;
@@ -791,9 +799,22 @@ ul { list-style: none; }
     .nav-links.active { display: flex; }
     .nav-links li { margin-left: 0 !important; }
     .hero { padding: 100px 0; }
-    .hero h2 { font-size: 32px; }
+    .hero h2 { font-size: 28px; }
     .hero-buttons { flex-direction: column; }
-    .hero-logos { gap: 20px; }
-    .hero-logos img { height: 100px; width: 100px; }
+    
+    /* Fix Hero Logos for Mobile */
+    .hero-logos { 
+        gap: 10px; 
+        flex-wrap: nowrap; 
+        justify-content: space-around;
+        padding: 0 10px;
+    }
+    .hero-logos img { 
+        width: 30%; 
+        height: auto; 
+        padding: 8px; 
+        border-radius: 10px;
+    }
+    
     .section-padding { padding: 60px 0; }
 }
