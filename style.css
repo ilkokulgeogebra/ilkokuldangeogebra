@@ -114,6 +114,22 @@ ul { list-style: none; }
 }
 .nav .nav-btn:hover { background-color: var(--primary-dark); color: white; }
 
+.nav-contact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.nav-contact:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
 /* Butonlar */
 .btn {
     display: inline-flex;
