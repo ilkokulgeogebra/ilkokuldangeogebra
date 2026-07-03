@@ -567,7 +567,7 @@ ul { list-style: none; }
 .method-content p { color: #d1d5db; margin-bottom: 40px; font-size: 18px; }
 
 .timeline {
-    border-left: 2px solid rgba(255,255,255,0.2);
+    border-left: 2px solid #ced4da;
     padding-left: 24px;
     margin-left: 12px;
 }
@@ -592,7 +592,7 @@ ul { list-style: none; }
     color: white;
 }
 
-.timeline-item p { margin-bottom: 0; font-weight: 500; color: white; }
+.timeline-item p { margin-bottom: 0; font-weight: 500; color: var(--text-color); }
 
 .impact-card {
     background: rgba(255,255,255,0.05);
