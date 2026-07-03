@@ -139,6 +139,14 @@
             mobileBtn.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
             });
+
+            // Linke tıklandığında menüyü otomatik kapat
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
         }
     </script>
                 
