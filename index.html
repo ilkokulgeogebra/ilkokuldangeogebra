@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İlkokulda GeoGebra - 2209-A Projesi</title>
     <link rel="icon" type="image/png" href="images/favicon.png?v=2">
-    <link rel="stylesheet" href="style.css?v=17">
+    <link rel="stylesheet" href="style.css?v=18">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -539,17 +539,54 @@
                             
                             createPage();
                             
-                            for (let el of elements) {
-                                measureBody.appendChild(el.cloneNode(true));
-                                // Sabit yükseklik sınırı koyuyoruz (700px sayfa - 150px başlık/altbilgi = 550px)
-                                if (measureBody.scrollHeight > 500 && measureBody.children.length > 1) {
-                                    measureBody.lastElementChild.remove();
-                                    createPage();
+                            function appendWithSplit(el) {
+                                // Eğer eleman resim vs ise doğrudan ekle ve taşarsa yeni sayfaya at
+                                if (el.nodeName !== 'P') {
                                     measureBody.appendChild(el.cloneNode(true));
-                                    realBody.appendChild(el.cloneNode(true));
-                                } else {
-                                    realBody.appendChild(el.cloneNode(true));
+                                    if (measureBody.scrollHeight > 500 && measureBody.children.length > 1) {
+                                        measureBody.lastElementChild.remove();
+                                        createPage();
+                                        measureBody.appendChild(el.cloneNode(true));
+                                        realBody.appendChild(el.cloneNode(true));
+                                    } else {
+                                        realBody.appendChild(el.cloneNode(true));
+                                    }
+                                    return;
                                 }
+
+                                // Eğer P ise ve çok uzunsa, kelime kelime bölerek sayfalara dağıt
+                                let words = el.innerHTML.split(' ');
+                                let currentP = document.createElement('p');
+                                measureBody.appendChild(currentP);
+                                let currentRealP = document.createElement('p');
+                                realBody.appendChild(currentRealP);
+                                
+                                for (let i = 0; i < words.length; i++) {
+                                    currentP.innerHTML += words[i] + ' ';
+                                    
+                                    if (measureBody.scrollHeight > 500) {
+                                        // Bu kelime taştı! Geri al.
+                                        let html = currentP.innerHTML;
+                                        currentP.innerHTML = html.substring(0, html.lastIndexOf(words[i] + ' '));
+                                        currentRealP.innerHTML = currentP.innerHTML;
+                                        
+                                        // Yeni sayfa oluştur
+                                        createPage();
+                                        
+                                        // Yeni sayfada yeni bir P başlat ve kelimeyi oraya koy
+                                        currentP = document.createElement('p');
+                                        measureBody.appendChild(currentP);
+                                        currentRealP = document.createElement('p');
+                                        realBody.appendChild(currentRealP);
+                                        
+                                        currentP.innerHTML += words[i] + ' ';
+                                    }
+                                }
+                                currentRealP.innerHTML = currentP.innerHTML;
+                            }
+                            
+                            for (let el of elements) {
+                                appendWithSplit(el);
                             }
                         });
                         
