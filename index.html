@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İlkokulda GeoGebra - 2209-A Projesi</title>
     <link rel="icon" type="image/png" href="images/favicon.png?v=2">
-    <link rel="stylesheet" href="style.css?v=13">
+    <link rel="stylesheet" href="style.css?v=14">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -475,29 +475,158 @@
                 }
 
                 if (flipBookContainer && PageFlipClass) {
-                });
-
-                // Masaüstü menüden seçince o sayfaya git
-                tabBtns.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const targetPage = parseInt(btn.getAttribute('data-page'));
-                        pageFlip.turnToPage(targetPage);
-                    });
-                });
-                
-                // Mobil açılır menüden seçince o sayfaya git
-                if (mobileSelect) {
-                    mobileSelect.addEventListener('change', (e) => {
-                        pageFlip.turnToPage(parseInt(e.target.value));
-                    });
+                    const sourceContent = document.getElementById('source-content');
+                    const sections = sourceContent.querySelectorAll('.report-section-data');
+                    
+                    // Görsellerin yüklenmesini bekle, sonra hesapla
+                    const images = sourceContent.querySelectorAll('img');
+                    let loaded = 0;
+                    
+                    function paginateAndInit() {
+                        // Ölçüm Kutusunu DOM'a ekle
+                        const measureBox = document.createElement('div');
+                        measureBox.className = 'page';
+                        measureBox.style.position = 'absolute';
+                        measureBox.style.visibility = 'hidden';
+                        measureBox.style.pointerEvents = 'none';
+                        measureBox.style.zIndex = '-9999';
+                        
+                        let isMobile = window.innerWidth < 768;
+                        const PAGE_WIDTH = 550;
+                        const PAGE_HEIGHT = 700;
+                        measureBox.style.width = PAGE_WIDTH + 'px';
+                        measureBox.style.height = PAGE_HEIGHT + 'px';
+                        document.body.appendChild(measureBox);
+                        
+                        window.pageToMenuMap = {};
+                        let globalPageCount = 0;
+                        
+                        sections.forEach(sec => {
+                            let title = sec.getAttribute('data-title');
+                            let menuId = parseInt(sec.getAttribute('data-menu'));
+                            let elements = Array.from(sec.children);
+                            
+                            let partNum = 1;
+                            let measureBody = null;
+                            let realBody = null;
+                            
+                            function createPage() {
+                                let pageDiv = document.createElement('div');
+                                pageDiv.className = 'page';
+                                let titleText = title + (partNum > 1 ? ` (${partNum})` : '');
+                                
+                                pageDiv.innerHTML = `
+                                    <div class="page-content">
+                                        <h3 class="page-title">${titleText}</h3>
+                                        <div class="page-body"></div>
+                                        <div class="page-footer">${globalPageCount + 1}</div>
+                                    </div>
+                                `;
+                                flipBookContainer.appendChild(pageDiv);
+                                
+                                measureBox.innerHTML = pageDiv.innerHTML;
+                                measureBody = measureBox.querySelector('.page-body');
+                                realBody = pageDiv.querySelector('.page-body');
+                                
+                                window.pageToMenuMap[globalPageCount] = menuId;
+                                globalPageCount++;
+                                partNum++;
+                            }
+                            
+                            createPage();
+                            
+                            for (let el of elements) {
+                                measureBody.appendChild(el.cloneNode(true));
+                                if (measureBody.scrollHeight > measureBody.clientHeight && measureBody.children.length > 1) {
+                                    measureBody.lastElementChild.remove();
+                                    createPage();
+                                    measureBody.appendChild(el.cloneNode(true));
+                                    realBody.appendChild(el.cloneNode(true));
+                                } else {
+                                    realBody.appendChild(el.cloneNode(true));
+                                }
+                            }
+                        });
+                        
+                        document.body.removeChild(measureBox);
+                        
+                        // --- StPageFlip Başlat ---
+                        const pageFlip = new PageFlipClass(flipBookContainer, {
+                            width: PAGE_WIDTH, 
+                            height: PAGE_HEIGHT, 
+                            size: "stretch", 
+                            minWidth: 350,
+                            maxWidth: 700,
+                            minHeight: 500,
+                            maxHeight: 800,
+                            maxShadowOpacity: 0.5,
+                            showCover: false, 
+                            mobileScrollSupport: false,
+                            usePortrait: true, 
+                            flippingTime: 800
+                        });
+                        
+                        pageFlip.loadFromHTML(document.querySelectorAll('#report-flipbook .page'));
+                        
+                        // Menü senkronizasyonu
+                        const tabBtns = document.querySelectorAll('.report-menu .tab-btn');
+                        const mobileSelect = document.getElementById('mobile-report-select');
+                        
+                        function updateActiveMenu(menuIndex) {
+                            tabBtns.forEach(b => b.classList.remove('active'));
+                            let btn = document.querySelector(`.report-menu .tab-btn[data-menu="${menuIndex}"]`);
+                            if(btn) btn.classList.add('active');
+                            if(mobileSelect) mobileSelect.value = menuIndex;
+                        }
+                        
+                        pageFlip.on('flip', (e) => {
+                            let currentPageIndex = e.data;
+                            let targetMenuIndex = window.pageToMenuMap[currentPageIndex];
+                            if (targetMenuIndex !== undefined) {
+                                updateActiveMenu(targetMenuIndex);
+                            }
+                        });
+                        
+                        tabBtns.forEach(btn => {
+                            btn.addEventListener('click', (e) => {
+                                let menuIndex = parseInt(e.target.getAttribute('data-menu'));
+                                let targetPage = parseInt(Object.keys(window.pageToMenuMap).find(key => window.pageToMenuMap[key] === menuIndex));
+                                if (!isNaN(targetPage)) pageFlip.turnToPage(targetPage);
+                                updateActiveMenu(menuIndex);
+                            });
+                        });
+                        
+                        if (mobileSelect) {
+                            mobileSelect.addEventListener('change', (e) => {
+                                let menuIndex = parseInt(e.target.value);
+                                let targetPage = parseInt(Object.keys(window.pageToMenuMap).find(key => window.pageToMenuMap[key] === menuIndex));
+                                if (!isNaN(targetPage)) pageFlip.turnToPage(targetPage);
+                                updateActiveMenu(menuIndex);
+                            });
+                        }
+                        
+                        const btnPrev = document.getElementById('flip-prev');
+                        const btnNext = document.getElementById('flip-next');
+                        if (btnPrev) btnPrev.addEventListener('click', () => pageFlip.flipPrev());
+                        if (btnNext) btnNext.addEventListener('click', () => pageFlip.flipNext());
+                    }
+                    
+                    if (images.length === 0) {
+                        paginateAndInit();
+                    } else {
+                        images.forEach(img => {
+                            if (img.complete) {
+                                loaded++;
+                                if (loaded === images.length) paginateAndInit();
+                            } else {
+                                img.onload = img.onerror = () => {
+                                    loaded++;
+                                    if (loaded === images.length) paginateAndInit();
+                                };
+                            }
+                        });
+                    }
                 }
-
-                // Navigasyon Okları (Sağ / Sol click)
-                const btnPrev = document.getElementById('flip-prev');
-                const btnNext = document.getElementById('flip-next');
-                if (btnPrev) btnPrev.addEventListener('click', () => pageFlip.flipPrev());
-                if (btnNext) btnNext.addEventListener('click', () => pageFlip.flipNext());
-            }
             } catch (e) {
                 console.error(e);
                 alert("E-Kitap yüklenirken hata oluştu: " + e.message);
