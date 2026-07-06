@@ -242,6 +242,10 @@ ul { list-style: none; }
     background-color: #f8f9fa;
 }
 
+.report-section .container {
+    max-width: 1350px;
+}
+
 .report-container {
     display: flex;
     flex-direction: column;
@@ -337,7 +341,7 @@ ul { list-style: none; }
     border-radius: 0 0 16px 16px;
     overflow: hidden; /* Keep page animations contained */
     position: relative; /* For arrow positioning */
-    min-height: 600px;
+    min-height: 720px;
 }
 @media (min-width: 768px) {
     .flip-book-container {
@@ -393,28 +397,27 @@ ul { list-style: none; }
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 30px;
 }
 @media (min-width: 768px) {
-    .page-content { padding: 30px; }
+    .page-content { padding: 45px; }
 }
 
 .page-title {
     color: var(--primary-color);
-    font-size: 20px;
+    font-size: 24px;
     border-bottom: 2px dashed #ffe0b2;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
     text-align: center;
 }
 
 .page-body {
     flex: 1;
-    overflow-y: auto;
-    font-size: 13px;
-    line-height: 1.5;
+    overflow: hidden;
+    font-size: 16px;
+    line-height: 1.7;
     color: #495057;
-    padding-right: 5px;
 }
 
 /* Custom Scrollbar for pages */
