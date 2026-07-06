@@ -895,87 +895,36 @@ ul { list-style: none; }
     text-align: center;
     margin-bottom: 40px;
 }
-.maarif-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-    margin-bottom: 50px;
-}
-.maarif-card {
+.maarif-paper {
     background: white;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    transition: transform 0.3s;
-    border-top: 4px solid var(--primary-color);
+    padding: 50px 60px;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    border: 1px solid #e2e8f0;
 }
-.maarif-card:hover {
-    transform: translateY(-8px);
+.maarif-text-block {
+    margin-bottom: 35px;
 }
-.maarif-icon {
-    font-size: 40px;
-    color: var(--secondary-color);
-    margin-bottom: 20px;
-}
-.maarif-card h4 {
+.maarif-text-block h4 {
     font-size: 20px;
     color: var(--primary-dark);
-    margin-bottom: 15px;
-    line-height: 1.4;
+    margin-bottom: 12px;
+    font-weight: 700;
 }
-.maarif-card p {
-    font-size: 16px;
-    color: var(--text-muted);
-    line-height: 1.7;
-    text-align: justify;
-}
-.maarif-example {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-    color: white;
-    padding: 40px;
-    border-radius: 20px;
-    margin-bottom: 40px;
-    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2);
-}
-.maarif-example h4 {
-    font-size: 22px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: white;
-}
-.maarif-example p {
+.maarif-text-block p {
     font-size: 17px;
     line-height: 1.8;
+    color: #334155;
+    text-align: justify;
     margin: 0;
-    color: #f8fafc;
-}
-.maarif-conclusion {
-    text-align: center;
-    padding: 30px;
-    background: white;
-    border-radius: 50px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    border: 2px dashed #cbd5e1;
-}
-.maarif-conclusion p {
-    font-size: 20px;
-    color: var(--primary-dark);
-    margin: 0;
-}
-.maarif-conclusion em {
-    color: var(--primary-color);
-    font-style: normal;
-    font-weight: 700;
 }
 
 @media (max-width: 768px) {
     .maarif-main-title { font-size: 24px; }
     .maarif-intro { font-size: 16px; padding: 20px; }
-    .maarif-grid { grid-template-columns: 1fr; }
-    .maarif-conclusion { border-radius: 20px; }
-    .maarif-example { padding: 25px; }
+    .maarif-paper { padding: 30px 20px; }
+    .maarif-text-block h4 { font-size: 18px; }
+    .maarif-text-block p { font-size: 16px; }
 }
 
 /* Responsive */
