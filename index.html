@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İlkokulda GeoGebra - 2209-A Projesi</title>
     <link rel="icon" type="image/png" href="images/favicon.png?v=2">
-    <link rel="stylesheet" href="style.css?v=19">
+    <link rel="stylesheet" href="style.css?v=20">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -554,13 +554,16 @@
                                 let currentRealP = document.createElement('p');
                                 realBody.appendChild(currentRealP);
                                 
+                                let currentWords = [];
+                                
                                 for (let i = 0; i < words.length; i++) {
-                                    currentP.innerHTML += words[i] + ' ';
+                                    currentWords.push(words[i]);
+                                    currentP.innerHTML = currentWords.join(' ') + ' ';
                                     
                                     if (measureBody.scrollHeight > 500) {
                                         // Bu kelime taştı! Geri al.
-                                        let html = currentP.innerHTML;
-                                        currentP.innerHTML = html.substring(0, html.lastIndexOf(words[i] + ' '));
+                                        currentWords.pop();
+                                        currentP.innerHTML = currentWords.join(' ') + ' ';
                                         currentRealP.innerHTML = currentP.innerHTML;
                                         
                                         // Yeni sayfa oluştur
@@ -572,7 +575,8 @@
                                         currentRealP = document.createElement('p');
                                         realBody.appendChild(currentRealP);
                                         
-                                        currentP.innerHTML += words[i] + ' ';
+                                        currentWords = [words[i]];
+                                        currentP.innerHTML = currentWords.join(' ') + ' ';
                                     }
                                 }
                                 currentRealP.innerHTML = currentP.innerHTML;
