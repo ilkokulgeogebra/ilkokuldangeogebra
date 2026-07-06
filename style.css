@@ -499,14 +499,11 @@ ul { list-style: none; }
 .team-card {
     background: var(--white);
     border-radius: var(--border-radius);
-    padding: 24px;
+    padding: 32px 24px;
+    text-align: center;
     box-shadow: var(--shadow-sm);
     border: 1px solid #e5e7eb;
     transition: var(--transition);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    text-align: left;
 }
 
 .team-card:hover {
@@ -516,11 +513,18 @@ ul { list-style: none; }
 }
 
 .team-photo-container {
-    width: 64px;
-    height: 64px;
-    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
     border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 5px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.4s ease;
+}
+
+.team-card:hover .team-photo-container {
+    transform: scale(1.05) rotate(5deg);
 }
 
 .team-photo {
@@ -528,16 +532,16 @@ ul { list-style: none; }
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    border: 2px solid #e2e8f0;
+    border: 4px solid var(--white);
+    background-color: var(--white);
 }
 
-.team-info {
-    flex: 1;
-}
+.advisor .team-photo-container { background: linear-gradient(135deg, #2563eb, #1e40af); }
+.principal .team-photo-container { background: linear-gradient(135deg, #f59e0b, #d97706); }
 
-.team-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 4px; color: var(--primary-dark); }
-.team-card .role { font-size: 13px; color: var(--primary-color); font-weight: 600; margin-bottom: 4px; }
-.team-card .inst { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+.team-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--primary-dark); }
+.team-card .role { font-size: 14px; color: var(--primary-color); font-weight: 600; margin-bottom: 8px; }
+.team-card .inst { font-size: 13px; color: var(--text-muted); }
 
 /* Proje Özeti */
 .about-grid {
