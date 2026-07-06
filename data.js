@@ -4,35 +4,50 @@
 const activitiesData = [
     {
         id: 1,
-        title: "Kare ve Dikdörtgenin Çevresi",
+        title: "Neşeli Çokgenler",
         grade: "3. Sınıf",
-        description: "Öğrencilerin kare ve dikdörtgenin çevre uzunluklarını dinamik olarak hesaplayıp aralarındaki ilişkiyi keşfetmesini sağlayan etkinlik.",
-        link: "https://www.geogebra.org/classic", // Buraya kendi GeoGebra linkinizi yapıştırın
-        icon: "📐" // Etkinliği temsil eden bir emoji
+        description: "Çevremizdeki nesnelerin hangi geometrik şekillere benzediğini keşfet! Üçgen, kare ve dikdörtgenleri rengarenk çizerek eğlen.",
+        link: "https://www.geogebra.org/classic",
+        icon: "🎨"
     },
     {
         id: 2,
-        title: "Açıları Tanıyalım",
+        title: "Simetri Aynası",
+        grade: "2. Sınıf",
+        description: "Sihirli aynamızla kelebeklerin, yaprakların ve sevimli şekillerin simetri doğrularını bul. Katla ve sihrin tadını çıkar!",
+        link: "https://www.geogebra.org/classic",
+        icon: "🦋"
+    },
+    {
+        id: 3,
+        title: "Zıp Zıp Açı Ölçer",
         grade: "4. Sınıf",
-        description: "Dar, dik, geniş ve doğru açıları sürgü yardımıyla etkileşimli olarak gösteren temel geometri etkinliği.",
+        description: "Parktaki kaydırakların ve tahterevallilerin açılarını bulmaya ne dersin? Dar, dik ve geniş açıları oynayarak öğren.",
         link: "https://www.geogebra.org/classic",
         icon: "📏"
     },
     {
-        id: 3,
-        title: "Simetri Çizgisi",
-        grade: "2. Sınıf",
-        description: "Çeşitli geometrik şekillerin simetri doğrularını katlama animasyonlarıyla anlatan görsel etkinlik.",
+        id: 4,
+        title: "Kendi Kutunu Yarat",
+        grade: "4. Sınıf",
+        description: "3 boyutlu dünyada kendi sihirli kutunu tasarla. Küp ve prizmaların nasıl açıldığını ve kapandığını animasyonlarla gör!",
         link: "https://www.geogebra.org/classic",
-        icon: "🦋"
+        icon: "📦"
+    },
+    {
+        id: 5,
+        title: "Şekil Eşleştirme Oyunu",
+        grade: "1. Sınıf",
+        description: "Ekrana düşen geometrik şekilleri doğru yuvalarına sürükle. En hızlı eşleştiren sen ol ve yıldızları topla!",
+        link: "https://www.geogebra.org/classic",
+        icon: "⭐"
+    },
+    {
+        id: 6,
+        title: "Uzayda Çevre Avı",
+        grade: "3. Sınıf",
+        description: "Uzay gemimizle şekillerin etrafında turlayarak çevre uzunluklarını hesapla. Gezegenler arası matematik yolculuğuna hazır mısın?",
+        link: "https://www.geogebra.org/classic",
+        icon: "🚀"
     }
-    // YENİ ETKİNLİĞİ BURAYA EKLEYİN:
-    // ,{
-    //    id: 4,
-    //    title: "Etkinlik Adı",
-    //    grade: "Sınıf Seviyesi",
-    //    description: "Etkinlik açıklaması",
-    //    link: "GeoGebra linkiniz",
-    //    icon: "🎨"
-    // }
 ];

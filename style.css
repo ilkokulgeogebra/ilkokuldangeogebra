@@ -659,27 +659,34 @@ ul { list-style: none; }
 
 .activity-card {
     background-color: var(--white);
-    border-radius: var(--border-radius);
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
-    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 3px solid #f3f4f6;
     display: flex;
     flex-direction: column;
 }
 
 .activity-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    border-color: var(--secondary-color);
 }
 
 .card-image-placeholder {
-    height: 180px;
-    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    height: 200px;
+    /* Rengarenk ve eğlenceli bir arka plan */
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 50px;
+    font-size: 75px;
+    transition: transform 0.3s;
+}
+
+.activity-card:hover .card-image-placeholder {
+    transform: scale(1.05);
 }
 
 .card-content {
@@ -687,22 +694,31 @@ ul { list-style: none; }
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    background-color: white;
+    position: relative;
+    z-index: 2;
 }
 
 .card-grade {
     display: inline-block;
-    background-color: rgba(37, 99, 235, 0.1);
-    color: var(--primary-color);
-    padding: 4px 12px;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 6px 16px;
     border-radius: 20px;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 800;
     margin-bottom: 16px;
     align-self: flex-start;
+    box-shadow: 0 4px 10px rgba(251, 191, 36, 0.4);
 }
 
 .card-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); }
 .card-desc { font-size: 15px; color: var(--text-muted); margin-bottom: 24px; flex-grow: 1; }
+
+.btn-playful:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4) !important;
+}
 
 /* Footer */
 .footer {

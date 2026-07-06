@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="card-grade">${activity.grade}</span>
                 <h3 class="card-title">${activity.title}</h3>
                 <p class="card-desc">${activity.description}</p>
-                <a href="${activity.link}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                    Etkinliğe Git
+                <a href="${activity.link}" target="_blank" rel="noopener noreferrer" class="btn btn-playful" style="border-radius: 30px; font-weight: 800; text-align: center; background-color: var(--primary-color); color: white; padding: 12px 24px; transition: transform 0.3s, box-shadow 0.3s; margin-top: auto; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); text-decoration: none;">
+                    Hemen Başla! 🚀
                 </a>
             </div>
         `;
