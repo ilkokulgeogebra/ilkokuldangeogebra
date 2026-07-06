@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İlkokulda GeoGebra - 2209-A Projesi</title>
     <link rel="icon" type="image/png" href="images/favicon.png?v=2">
-    <link rel="stylesheet" href="style.css?v=9">
+    <link rel="stylesheet" href="style.css?v=10">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -616,11 +616,17 @@
 
         // StPageFlip Entegrasyonu
         document.addEventListener('DOMContentLoaded', function() {
-            const flipBookContainer = document.getElementById('report-flipbook');
-            const PageFlipClass = window.PageFlip || (window.StPageFlip && window.StPageFlip.PageFlip);
-            
-            if (flipBookContainer && PageFlipClass) {
-                const pageFlip = new PageFlipClass(flipBookContainer, {
+            try {
+                const flipBookContainer = document.getElementById('report-flipbook');
+                const PageFlipClass = window.PageFlip || (window.StPageFlip && window.StPageFlip.PageFlip);
+                
+                if (!PageFlipClass) {
+                    alert("E-Kitap motoru (PageFlip) yüklenemedi! Dosya eksik veya engelleniyor.");
+                    return;
+                }
+
+                if (flipBookContainer && PageFlipClass) {
+                    const pageFlip = new PageFlipClass(flipBookContainer, {
                     width: 400, // Tek sayfanın baz genişliği
                     height: 550, // Sayfa yüksekliği
                     size: "stretch", // Container'a sığması için stretch
@@ -683,6 +689,10 @@
                 const btnNext = document.getElementById('flip-next');
                 if (btnPrev) btnPrev.addEventListener('click', () => pageFlip.flipPrev());
                 if (btnNext) btnNext.addEventListener('click', () => pageFlip.flipNext());
+            }
+            } catch (e) {
+                console.error(e);
+                alert("E-Kitap yüklenirken hata oluştu: " + e.message);
             }
         });
     </script>
