@@ -248,13 +248,14 @@ ul { list-style: none; }
     background: var(--white);
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    overflow: hidden;
     margin-top: 40px;
+    /* overflow: hidden; removed for sticky to work */
 }
 
 @media (min-width: 768px) {
     .report-container {
         flex-direction: row;
+        align-items: flex-start; /* For sticky menu */
     }
 }
 
@@ -264,6 +265,10 @@ ul { list-style: none; }
     background: #f1f3f5;
     min-width: 250px;
     padding: 20px 0;
+    position: sticky;
+    top: 100px;
+    z-index: 10;
+    border-radius: 16px 0 0 16px;
 }
 
 .tab-btn {
@@ -290,19 +295,72 @@ ul { list-style: none; }
     border-left: 4px solid var(--primary-color);
 }
 
-.report-content-area {
+/* Flipbook Styles */
+.flip-book-container {
     flex: 1;
-    padding: 40px;
-    min-height: 400px;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fdfbf7; /* Light pastel background */
+    border-radius: 0 16px 16px 0;
+    overflow: hidden; /* Keep page animations contained */
 }
 
-.tab-content {
-    display: none;
-    animation: fadeIn 0.4s ease;
+.page {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    overflow: hidden;
 }
 
-.tab-content.active {
-    display: block;
+/* StPageFlip assigns --left and --right classes automatically */
+.page.--right {
+    border-radius: 0 12px 12px 0;
+    box-shadow: inset 8px 0 20px rgba(0,0,0,0.03), 4px 5px 15px rgba(0,0,0,0.08);
+}
+.page.--left {
+    border-radius: 12px 0 0 12px;
+    box-shadow: inset -8px 0 20px rgba(0,0,0,0.03), -4px 5px 15px rgba(0,0,0,0.08);
+}
+
+.page-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.page-title {
+    color: var(--primary-color);
+    font-size: 22px;
+    border-bottom: 2px dashed #ffe0b2;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.page-body {
+    flex: 1;
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #495057;
+    padding-right: 5px;
+}
+
+/* Custom Scrollbar for pages */
+.page-body::-webkit-scrollbar { width: 5px; }
+.page-body::-webkit-scrollbar-track { background: transparent; }
+.page-body::-webkit-scrollbar-thumb { background-color: #ffb74d; border-radius: 10px; }
+
+.page-footer {
+    text-align: center;
+    font-size: 12px;
+    color: #adb5bd;
+    padding-top: 10px;
+    border-top: 1px solid #f1f3f5;
+    margin-top: 10px;
 }
 
 .tab-content h3 {

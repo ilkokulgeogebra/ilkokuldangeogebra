@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İlkokulda GeoGebra - 2209-A Projesi</title>
     <link rel="icon" type="image/png" href="images/favicon.png?v=2">
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=4">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -122,7 +122,7 @@
         </div>
     </section>
 
-    <!-- Proje Raporu (Dikey Sekmeler) -->
+    <!-- Proje Raporu (E-Kitap) -->
     <section id="proje-raporu" class="report-section section-padding bg-light">
         <div class="container">
             <div class="section-header text-center">
@@ -131,195 +131,198 @@
                 <p class="section-subtitle">2209-A projemizin amacı, yöntemi, bilimsel temelleri ve beklenen yaygın etkileri.</p>
             </div>
             
-            <div class="report-container">
+            <div class="report-container flipbook-layout">
                 <!-- Sol Menü -->
                 <div class="report-menu">
-                    <button class="tab-btn active" data-target="tab-ozet">Özet & Amaç</button>
-                    <button class="tab-btn" data-target="tab-ozgun">Özgün Değer</button>
-                    <button class="tab-btn" data-target="tab-yontem">Yöntem</button>
-                    <button class="tab-btn" data-target="tab-surec">Proje Süreci</button>
-                    <button class="tab-btn" data-target="tab-yonetim">Proje Yönetimi</button>
-                    <button class="tab-btn" data-target="tab-etki">Yaygın Etki</button>
-                    <button class="tab-btn" data-target="tab-butce">Bütçe</button>
-                    <button class="tab-btn" data-target="tab-kaynaklar">Kaynaklar</button>
+                    <button class="tab-btn active" data-page="0">Özet & Amaç</button>
+                    <button class="tab-btn" data-page="1">Özgün Değer</button>
+                    <button class="tab-btn" data-page="2">Yöntem</button>
+                    <button class="tab-btn" data-page="3">Proje Süreci</button>
+                    <button class="tab-btn" data-page="4">Proje Yönetimi</button>
+                    <button class="tab-btn" data-page="5">Yaygın Etki</button>
+                    <button class="tab-btn" data-page="6">Kaynaklar</button>
+                    <button class="tab-btn" data-page="7">Bütçe</button>
                 </div>
-                <script>
-        // Sekme Değiştirme Mantığı
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                tabBtns.forEach(b => b.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-
-                btn.classList.add('active');
-                document.getElementById(btn.dataset.target).classList.add('active');
-            });
-        });
-
-        // Mobil Menü Toggle Mantığı
-        const mobileBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-
-        if(mobileBtn) {
-            mobileBtn.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-
-            // Linke tıklandığında menüyü otomatik kapat
-            const navItems = document.querySelectorAll('.nav-links a');
-            navItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                });
-            });
-        }
-    </script>
                 
-                <!-- Sağ İçerik Alanı -->
-                <div class="report-content-area">
-                    
-                    <!-- 1. ÖZET & AMAÇ -->
-                    <div id="tab-ozet" class="tab-content active">
-                        <h3>Özet ve Amaç</h3>
-                        <p>Bu projede amaç, sınıf öğretmenlerinin sınıf içinde matematik derslerinde kullanabileceği ilkokul matematik öğretim programı geometri kazanımlarının öğretiminde kullanılabilecek geogebra etkinliklerini kapsayan <strong>etkileşimli kılavuz kitap</strong> hazırlamaktır.</p>
-                        <p>Bu uygulama sınıf öğretmenlerinin geometri öğretiminde kullanabileceği etkileşimli kılavuz kitap hazırlamayı hedeflemektedir. Bu uygulama ile uygulamaya katılan proje sahibi ve ortakları sınıf öğretmeni adayları GeoGebra'yı derslerde nasıl uygulayabilecekleri hakkında bilgi sahibi olunması ve sınıf öğretmeni adayları ve sınıf öğretmenleri ile paylaşılması hedeflenmektedir.</p>
-                        <p>Bu proje, nitel araştırma yöntemlerinden <em>doküman analizi</em> şeklinde desende tasarlanmıştır. Veriler hazırlanan ya da hazırlanacak olan GeoGebra etkinliklerinden seçilecektir. Etkinlikler seçilirken öncelikle matematik öğretim programı kazanımlarına uygunluğu hedeflenmektedir. Bu etkinliklerin uygunluğu alanın uzmanlarından alınan görüşler ile sağlanacaktır. Oyunların kartları hazırlanırken anlaşılır ve basit bir şekilde anlatılmasına dikkat edilecektir. Veriler betimsel analiz ile analiz edilecektir.</p>
-                        <p>Proje yürütücüsü ve proje ortaklarının, GeoGebra programını öğrenmeleri, matematik öğretim programı kazanımlarına uygun olanları seçmeleri, matematik derslerinde nasıl uygulayanacağı ve geniş bir arşiv ve bilgi birikimine sahip olacaktır. Projenin yürütücüsü ve proje ortakları edindikleri bu bilgi ve deneyimi sınıf öğretmenleri adayları ve sınıf öğretmenleri ile paylaşabilecekleri bir kitap çalışması ya da dijital ortamda paylaşması projenin bir diğer önemli katkısı olacaktır.</p>
-                        <div class="keywords">
-                            <span class="keyword">GeoGebra</span>
-                            <span class="keyword">Geometri Kazanımları</span>
-                            <span class="keyword">Kılavuz Kitap</span>
-                        </div>
-                    </div>
-
-                    <!-- 2. ÖZGÜN DEĞER -->
-                    <div id="tab-ozgun" class="tab-content">
-                        <h3>Konunun Önemi, Araştırma Önerisinin Özgün Değeri ve Araştırma Sorusu/Hipotezi</h3>
-                        <p>GeoGebra her kademede kullanılabilecek nokta, doğru, doğru parçası, prizma gibi birçok kavramı içeren ve bu kavramlar arasında dinamik ilişkilerin ortaya çıkmasını sağlayan (Diković, 2009) yaygın kullanılan Java tabanlı bir dinamik geometri yazılımıdır. Salzburg Üniversitesinde Marcus Hohenwarter'ın yüksek lisans tez projesi olarak, ortaokullarda matematik eğitimi için tamamen yeni bir araç geliştirmek amacıyla başladığı çalışmasında öğrencilerin geometri ve cebir arasındaki bağlantıları anlayabileceği GeoGebra geliştirilmiştir (Hohenwarter ve Fuchs, 2004).</p>
-                        <p>Dinamik geometri yazılımları sayesinde geometrik çizimler de yapılabilmektedir (Hohenwarter, 2003). GeoGebra ayrıca öğrencilerin matematiksel kavramları daha derinlemesine anlamalarına katkıda bulunabilecek çoklu gösterimleri sunar (Duval, 1999). Geogebra, internet üzerinden özgürce indirilebilen ve dolayısıyla herhangi bir kısıtlama olmaksızın evde veya okulda kullanılabilen bir yazılımdır. (Hohenwarter ve Lavinca, 2007). GeoGebra, öğrencilerin geometrinin temel elemanlarını oluşturma ve bunlardan yararlanarak yeni geometrik yapıları yapılandırmasına yardımcı olur. Kullanımı kolay bir arayüzü vardır.</p>
+                <!-- Sağ E-Kitap Alanı -->
+                <div class="flip-book-container">
+                    <div id="report-flipbook">
                         
-                        <!-- Görsel Buraya Eklendi -->
-                        <div style="text-align: center; margin: 30px 0;">
-                            <img src="images/geogebra-arayuz.png" alt="GeoGebra Geometri Arayüzü" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                            <p style="font-size: 14px; color: #6c757d; margin-top: 10px;">Şekil 1: GeoGebra Geometri Arayüzü</p>
-                        </div>
-
-                        <p>Türkiye'de GeoGebra ile ilgili çalışmalar 2005 yılında başlamıştır. 2009 yılında da GeoGebra'nın kullanım kılavuzu Türkçe'ye çevrilmiştir (Doğan, 2013). Türkiye'de Ankara ve İstanbul'da olmak üzere iki farklı GeoGebra enstitüsü kurulmuştur. Eğitim fakültelerinde GeoGebra dersleri, matematik ders kitaplarında GeoGebra ile ilgili uygulamalara yer verilmiştir. Birçok makale, proje, yüksek lisans ve doktora tez çalışmaları yapılmıştır (Doğan, 2013).</p>
-                        <p>İlkokul 4. Sınıf simetri konusu kazanımına yönelik 5.sınıf düzeyinde yapılan çalışmada GeoGebra'nın akademik başarıyı arttırdığı sonucuna ulaşılmıştır. Öğrenciler bilgisayar destekli öğretimle işlenen dersleri diğer yöntemlerle işlenen derslere göre daha kolay anlaşılır, faydalı, eğlenceli ve zevkli bulmuşlardır. Öğrenciler derslerde bilgisayar kullanımını gerekli bulmaktadır ve bundan sonra da bu yazılımla ders çalışacaklarını ifade etmişlerdir (Özçakır Sümen, 2013).</p>
-                        <p>GeoGebra'nın yaygın kullanılmasının sebebi ücretsiz olması, Türkçe dil özelliğinin olması, hazırlanan materyallerin diğer kullanıcılarla paylaşılması ve bilgisayara kurulumuna gerek kalmadan kolayca materyallere ulaşılabilmesi gibi sebepler sayılabilir.</p>
-
-                        <h4 style="margin-top:30px;">Amaç ve Hedefler</h4>
-                        <p>Bu proje, sınıf öğretmenlerinin sınıf içinde matematik derslerinde kullanabileceği ilkokul matematik öğretim programı geometri kazanımlarının öğretiminde kullanılabilecek geogebra etkinliklerini kapsayan etkileşimli kılavuz kitap hazırlamayı amaçlamaktadır. Bu uygulama sınıf öğretmeni adaylarına ve sınıf öğretmenlerine sınıf içinde matematik dersinde kullanılabileceği GeoGebra'yı tanıma ve tanıtma fırsatı sunacaktır.</p>
-                        <p>Bu çalışmada amaç GeoGebra etkinliklerinin ilkokul matematik öğretim programı kazanımları ile eşlemektir. Bu amaç doğrultusunda, projenin hedefleri aşağıdaki gibidir:</p>
-                        <ul class="custom-list">
-                            <li><i class="fa-solid fa-check"></i> Sınıf öğretmeni adaylarına ilkokul matematik öğretim programı kazanımları ile ilişkilendirilebilecek sınıfta kullanabilecekleri GeoGebra etkinlikleri tanıtmak.</li>
-                            <li><i class="fa-solid fa-check"></i> Sınıf öğretmeni adaylarına ilkokul matematik öğretim programı kazanımları ile GeoGebra etkinliklerinin eşleştirildiği bir kitabı hazırlamak.</li>
-                        </ul>
-                    </div>
-
-                    <!-- 3. YÖNTEM -->
-                    <div id="tab-yontem" class="tab-content">
-                        <h3>Araştırma Yöntemi</h3>
-                        <p>Bu çalışma, nitel araştırma yöntemlerinden biri olan <strong>doküman analizi</strong> çalışması olup mevcut bir durumun analizi yapılmıştır. Araştırmada kullanılacak olan doküman analizi, yazılı belgelerin içeriğini titizlikle ve sistematik olarak analiz etmek için kullanılan bir nitel araştırma yöntemidir (Wach, 2013). Doküman incelemesi, araştırılması amaçlanan olgu veya olgular hakkında yazılı bilgi kaynaklarının analiz edilmesidir (Yıldırım ve Şimşek, 2013). Doküman incelemesi, aynı zamanda tek başına kullanılabilen bir araştırma tekniğidir (Bowen, 2009).</p>
-                        <p>Araştırmanın veri kaynağını Matematik Dersi Öğretim Programı (MEB,2018) kazanımları oluşturmaktadır. Konu ile ilgili tez, makale, kitap ve web kaynakları kullanılacaktır.</p>
-                        <p>Elde edilen veriler betimsel analiz tekniği bakımından analizi yapılarak sistematik bir şekilde bulgular ortaya konulmuştur. Betimsel analiz bakımından veriler önceden literatürde bulunan temalar dikkate alınarak kodlanır (Yıldırım & Şimşek, 2006:224).</p>
-                        <p>Elde edilen verilerin geçerlik çalışmaları alanlarında uzmanlar tarafından görüşler alınacak ve güvenirlik çalışması için ise Miles ve Huberman'ın (1994) formülünden yararlanacaktır.</p>
-                    </div>
-
-                    <!-- 4. PROJE SÜRECİ -->
-                    <div id="tab-surec" class="tab-content">
-                        <h3>Proje Aşamaları</h3>
-                        <p>Bu proje dört aşamada gerçekleştirilecektir. İlk aşamada araştırmacılar GeoGebra'nın kullanımını öğrenecektir. İkinci aşamada geometri kazanımlarına uygun etkinliklerin araştırılacaktır. Üçüncü aşamada geometri kazanımlarına uygun etkinlik kartları hazırlanacaktır. Dördüncü ve son aşamada kitap tasarlanacaktır.</p>
-
-                        <h3 style="margin-top: 30px;">Projenin Uygulama Süreci</h3>
-
-                        <!-- Görsel Buraya Eklendi -->
-                        <div style="text-align: center; margin: 20px 0;">
-                            <img src="images/proje-sureci.png" alt="Proje Uygulama Süreci" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                            <p style="font-size: 14px; color: #6c757d; margin-top: 10px;">Şekil 2: Proje Uygulama Süreci Aşamaları</p>
-                        </div>
-                        
-                        <div class="timeline" style="margin-top:30px;">
-                            <div class="timeline-item">
-                                <div class="dot">1</div>
-                                <h4>1. Aşama</h4>
-                                <p>Bu aşamada araştırmacılar GeoGebra programının kullanımını öğreneceklerdir. Araştırmacılar sınıf öğretmeni adayı arkadaşlarına öğreteceklerdir.</p>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="dot">2</div>
-                                <h4>2. Aşama</h4>
-                                <p>Bu aşamada ilkokul matematik öğretim programı geometri kazanımlarına uygun GeoGebra etkinlikleri araştırılacaktır. GeoGebra etkinlikleri ile ilkokul matematik öğretim programı geometri kazanımlarına uygun olup olmadığına sınıf öğretmeni ve alan uzmanlarının görüşlerine başvurularak son hali verilecektir.</p>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="dot">3</div>
-                                <h4>3. Aşama</h4>
-                                <p>Bu aşamada ilkokul matematik öğretim programı geometri kazanımlarına uygun GeoGebra etkinlikleri belirlendikten sonra etkinlik kartları tasarlanacaktır. Etkinlik kartlarında Geogebra etkinliği, eşlenen kazanım, etkinliğin nasıl uygulanacağı, etkileşimli bir şekilde ve uygun görseller yer alacaktır.</p>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="dot">4</div>
-                                <h4>4. Aşama</h4>
-                                <p>Son aşamada GeoGebra etkinlikleri ile ilkokul matematik öğretim programı geometri kazanımlarının eşleştiği bir kitabın bölümlerine karar verilecek ve kitap tasarımı için gerekli araştırmalar yapıldıktan sonra kitabın son hali verilecektir.</p>
+                        <!-- 1. ÖZET & AMAÇ -->
+                        <div class="page">
+                            <div class="page-content">
+                                <h3 class="page-title">Özet ve Amaç</h3>
+                                <div class="page-body">
+                                    <p>Bu projede amaç, sınıf öğretmenlerinin sınıf içinde matematik derslerinde kullanabileceği ilkokul matematik öğretim programı geometri kazanımlarının öğretiminde kullanılabilecek geogebra etkinliklerini kapsayan <strong>etkileşimli kılavuz kitap</strong> hazırlamaktır.</p>
+                                    <p>Bu uygulama sınıf öğretmenlerinin geometri öğretiminde kullanabileceği etkileşimli kılavuz kitap hazırlamayı hedeflemektedir. Bu uygulama ile uygulamaya katılan proje sahibi ve ortakları sınıf öğretmeni adayları GeoGebra'yı derslerde nasıl uygulayabilecekleri hakkında bilgi sahibi olunması ve sınıf öğretmeni adayları ve sınıf öğretmenleri ile paylaşılması hedeflenmektedir.</p>
+                                    <p>Bu proje, nitel araştırma yöntemlerinden <em>doküman analizi</em> şeklinde desende tasarlanmıştır. Veriler hazırlanan ya da hazırlanacak olan GeoGebra etkinliklerinden seçilecektir. Etkinlikler seçilirken öncelikle matematik öğretim programı kazanımlarına uygunluğu hedeflenmektedir. Bu etkinliklerin uygunluğu alanın uzmanlarından alınan görüşler ile sağlanacaktır. Oyunların kartları hazırlanırken anlaşılır ve basit bir şekilde anlatılmasına dikkat edilecektir. Veriler betimsel analiz ile analiz edilecektir.</p>
+                                    <p>Proje yürütücüsü ve proje ortaklarının, GeoGebra programını öğrenmeleri, matematik öğretim programı kazanımlarına uygun olanları seçmeleri, matematik derslerinde nasıl uygulayanacağı ve geniş bir arşiv ve bilgi birikimine sahip olacaktır. Projenin yürütücüsü ve proje ortakları edindikleri bu bilgi ve deneyimi sınıf öğretmenleri adayları ve sınıf öğretmenleri ile paylaşabilecekleri bir kitap çalışması ya da dijital ortamda paylaşması projenin bir diğer önemli katkısı olacaktır.</p>
+                                    <div class="keywords">
+                                        <span class="keyword">GeoGebra</span>
+                                        <span class="keyword">Geometri Kazanımları</span>
+                                        <span class="keyword">Kılavuz Kitap</span>
+                                    </div>
+                                </div>
+                                <div class="page-footer">1</div>
                             </div>
                         </div>
-                        <p>Bu aşamalardan sonra yayınevleri ile iletişime geçilerek kitabın basım aşaması yapılacaktır. Bu aşamada, kitap basılamadığı takdirde yapılan çalışmanın ilkokul öğrencilerine ulaşması için sınıf öğretmeni adayları ve sınıf öğretmenlerinin kullanabilmesi için dijital ortamda paylaşılacaktır.</p>
-                    </div>
 
-                    <!-- 4.1 PROJE YÖNETİMİ -->
-                    <div id="tab-yonetim" class="tab-content">
-                        <h3>PROJE YÖNETİMİ</h3>
-                        
-                        <h4 style="margin-top: 25px; text-align: center;">İŞ-ZAMAN ÇİZELGESİ (*)</h4>
-                        <div style="text-align: center; margin: 20px 0;">
-                            <img src="images/is-zaman-cizelgesi.png" alt="İş-Zaman Çizelgesi" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <!-- 2. ÖZGÜN DEĞER -->
+                        <div class="page">
+                            <div class="page-content">
+                                <h3 class="page-title">Özgün Değer</h3>
+                                <div class="page-body">
+                                    <p>GeoGebra her kademede kullanılabilecek nokta, doğru, doğru parçası, prizma gibi birçok kavramı içeren ve bu kavramlar arasında dinamik ilişkilerin ortaya çıkmasını sağlayan (Diković, 2009) yaygın kullanılan Java tabanlı bir dinamik geometri yazılımıdır. Salzburg Üniversitesinde Marcus Hohenwarter'ın yüksek lisans tez projesi olarak, ortaokullarda matematik eğitimi için tamamen yeni bir araç geliştirmek amacıyla başladığı çalışmasında öğrencilerin geometri ve cebir arasındaki bağlantıları anlayabileceği GeoGebra geliştirilmiştir (Hohenwarter ve Fuchs, 2004).</p>
+                                    <p>Dinamik geometri yazılımları sayesinde geometrik çizimler de yapılabilmektedir (Hohenwarter, 2003). GeoGebra ayrıca öğrencilerin matematiksel kavramları daha derinlemesine anlamalarına katkıda bulunabilecek çoklu gösterimleri sunar (Duval, 1999). Geogebra, internet üzerinden özgürce indirilebilen ve dolayısıyla herhangi bir kısıtlama olmaksızın evde veya okulda kullanılabilen bir yazılımdır. (Hohenwarter ve Lavinca, 2007). GeoGebra, öğrencilerin geometrinin temel elemanlarını oluşturma ve bunlardan yararlanarak yeni geometrik yapıları yapılandırmasına yardımcı olur. Kullanımı kolay bir arayüzü vardır.</p>
+                                    
+                                    <div style="text-align: center; margin: 20px 0;">
+                                        <img src="images/geogebra-arayuz.png" alt="GeoGebra Geometri Arayüzü" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                                        <p style="font-size: 13px; color: #6c757d; margin-top: 5px;">Şekil 1: GeoGebra Geometri Arayüzü</p>
+                                    </div>
+
+                                    <p>Türkiye'de GeoGebra ile ilgili çalışmalar 2005 yılında başlamıştır. 2009 yılında da GeoGebra'nın kullanım kılavuzu Türkçe'ye çevrilmiştir (Doğan, 2013). Türkiye'de Ankara ve İstanbul'da olmak üzere iki farklı GeoGebra enstitüsü kurulmuştur. Eğitim fakültelerinde GeoGebra dersleri, matematik ders kitaplarında GeoGebra ile ilgili uygulamalara yer verilmiştir. Birçok makale, proje, yüksek lisans ve doktora tez çalışmaları yapılmıştır (Doğan, 2013).</p>
+                                    <p>İlkokul 4. Sınıf simetri konusu kazanımına yönelik 5.sınıf düzeyinde yapılan çalışmada GeoGebra'nın akademik başarıyı arttırdığı sonucuna ulaşılmıştır. Öğrenciler bilgisayar destekli öğretimle işlenen dersleri diğer yöntemlerle işlenen derslere göre daha kolay anlaşılır, faydalı, eğlenceli ve zevkli bulmuşlardır. Öğrenciler derslerde bilgisayar kullanımını gerekli bulmaktadır ve bundan sonra da bu yazılımla ders çalışacaklarını ifade etmişlerdir (Özçakır Sümen, 2013).</p>
+                                    <p>GeoGebra'nın yaygın kullanılmasının sebebi ücretsiz olması, Türkçe dil özelliğinin olması, hazırlanan materyallerin diğer kullanıcılarla paylaşılması ve bilgisayara kurulumuna gerek kalmadan kolayca materyallere ulaşılabilmesi gibi sebepler sayılabilir.</p>
+
+                                    <h4 style="margin-top:20px;">Amaç ve Hedefler</h4>
+                                    <p>Bu proje, sınıf öğretmenlerinin sınıf içinde matematik derslerinde kullanabileceği ilkokul matematik öğretim programı geometri kazanımlarının öğretiminde kullanılabilecek geogebra etkinliklerini kapsayan etkileşimli kılavuz kitap hazırlamayı amaçlamaktadır. Bu uygulama sınıf öğretmeni adaylarına ve sınıf öğretmenlerine sınıf içinde matematik dersinde kullanılabileceği GeoGebra'yı tanıma ve tanıtma fırsatı sunacaktır.</p>
+                                    <p>Bu çalışmada amaç GeoGebra etkinliklerinin ilkokul matematik öğretim programı kazanımları ile eşlemektir. Bu amaç doğrultusunda, projenin hedefleri aşağıdaki gibidir:</p>
+                                    <ul class="custom-list">
+                                        <li><i class="fa-solid fa-check"></i> Sınıf öğretmeni adaylarına ilkokul matematik öğretim programı kazanımları ile ilişkilendirilebilecek sınıfta kullanabilecekleri GeoGebra etkinlikleri tanıtmak.</li>
+                                        <li><i class="fa-solid fa-check"></i> Sınıf öğretmeni adaylarına ilkokul matematik öğretim programı kazanımları ile GeoGebra etkinliklerinin eşleştirildiği bir kitabı hazırlamak.</li>
+                                    </ul>
+                                </div>
+                                <div class="page-footer">2</div>
+                            </div>
                         </div>
 
-                        <h4 style="margin-top: 40px; text-align: center;">RİSK YÖNETİMİ TABLOSU*</h4>
-                        <div style="text-align: center; margin: 20px 0;">
-                            <img src="images/risk-yonetimi.png" alt="Risk Yönetimi Tablosu" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <!-- 3. YÖNTEM -->
+                        <div class="page">
+                            <div class="page-content">
+                                <h3 class="page-title">Araştırma Yöntemi</h3>
+                                <div class="page-body">
+                                    <p>Bu çalışma, nitel araştırma yöntemlerinden biri olan <strong>doküman analizi</strong> çalışması olup mevcut bir durumun analizi yapılmıştır. Araştırmada kullanılacak olan doküman analizi, yazılı belgelerin içeriğini titizlikle ve sistematik olarak analiz etmek için kullanılan bir nitel araştırma yöntemidir (Wach, 2013). Doküman incelemesi, araştırılması amaçlanan olgu veya olgular hakkında yazılı bilgi kaynaklarının analiz edilmesidir (Yıldırım ve Şimşek, 2013). Doküman incelemesi, aynı zamanda tek başına kullanılabilen bir araştırma tekniğidir (Bowen, 2009).</p>
+                                    <p>Araştırmanın veri kaynağını Matematik Dersi Öğretim Programı (MEB,2018) kazanımları oluşturmaktadır. Konu ile ilgili tez, makale, kitap ve web kaynakları kullanılacaktır.</p>
+                                    <p>Elde edilen veriler betimsel analiz tekniği bakımından analizi yapılarak sistematik bir şekilde bulgular ortaya konulmuştur. Betimsel analiz bakımından veriler önceden literatürde bulunan temalar dikkate alınarak kodlanır (Yıldırım & Şimşek, 2006:224).</p>
+                                    <p>Elde edilen verilerin geçerlik çalışmaları alanlarında uzmanlar tarafından görüşler alınacak ve güvenirlik çalışması için ise Miles ve Huberman'ın (1994) formülünden yararlanacaktır.</p>
+                                </div>
+                                <div class="page-footer">3</div>
+                            </div>
                         </div>
 
-                        <h4 style="margin-top: 40px; text-align: center;">ARAŞTIRMA OLANAKLARI TABLOSU (*)</h4>
-                        <div style="text-align: center; margin: 20px 0;">
-                            <img src="images/arastirma-olanaklari.png" alt="Araştırma Olanakları Tablosu" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <!-- 4. PROJE SÜRECİ -->
+                        <div class="page">
+                            <div class="page-content">
+                                <h3 class="page-title">Proje Süreci</h3>
+                                <div class="page-body">
+                                    <p>Bu proje dört aşamada gerçekleştirilecektir. İlk aşamada araştırmacılar GeoGebra'nın kullanımını öğrenecektir. İkinci aşamada geometri kazanımlarına uygun etkinliklerin araştırılacaktır. Üçüncü aşamada geometri kazanımlarına uygun etkinlik kartları hazırlanacaktır. Dördüncü ve son aşamada kitap tasarlanacaktır.</p>
+
+                                    <h4 style="margin-top: 20px;">Uygulama Süreci</h4>
+                                    <div style="text-align: center; margin: 15px 0;">
+                                        <img src="images/proje-sureci.png" alt="Proje Uygulama Süreci" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                                    </div>
+                                    
+                                    <div class="timeline" style="margin-top:20px;">
+                                        <div class="timeline-item">
+                                            <div class="dot">1</div>
+                                            <h4>1. Aşama</h4>
+                                            <p>Araştırmacılar GeoGebra programının kullanımını öğreneceklerdir.</p>
+                                        </div>
+                                        <div class="timeline-item">
+                                            <div class="dot">2</div>
+                                            <h4>2. Aşama</h4>
+                                            <p>İlkokul matematik öğretim programı geometri kazanımlarına uygun GeoGebra etkinlikleri araştırılacaktır.</p>
+                                        </div>
+                                        <div class="timeline-item">
+                                            <div class="dot">3</div>
+                                            <h4>3. Aşama</h4>
+                                            <p>GeoGebra etkinlikleri belirlendikten sonra etkinlik kartları tasarlanacaktır.</p>
+                                        </div>
+                                        <div class="timeline-item">
+                                            <div class="dot">4</div>
+                                            <h4>4. Aşama</h4>
+                                            <p>GeoGebra etkinlikleri ile matematik kazanımlarının eşleştiği bir kitabın tasarımı tamamlanacaktır.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="page-footer">4</div>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- 5. YAYGIN ETKİ -->
-                    <div id="tab-etki" class="tab-content">
-                        <h3>YAYGIN ETKİ</h3>
-                        
-                        <h4 style="margin-top: 25px; text-align: center;">ARAŞTIRMA ÖNERİSİNDEN BEKLENEN YAYGIN ETKİ TABLOSU</h4>
-                        <div style="text-align: center; margin: 20px 0;">
-                            <img src="images/yaygin-etki.png" alt="Yaygın Etki Tablosu" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <!-- 5. PROJE YÖNETİMİ -->
+                        <div class="page">
+                            <div class="page-content">
+                                <h3 class="page-title">Proje Yönetimi</h3>
+                                <div class="page-body">
+                                    <h4 style="margin-top: 15px; text-align: center;">İŞ-ZAMAN ÇİZELGESİ</h4>
+                                    <div style="text-align: center; margin: 15px 0;">
+                                        <img src="images/is-zaman-cizelgesi.png" alt="İş-Zaman Çizelgesi" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                                    </div>
+
+                                    <h4 style="margin-top: 25px; text-align: center;">RİSK YÖNETİMİ TABLOSU</h4>
+                                    <div style="text-align: center; margin: 15px 0;">
+                                        <img src="images/risk-yonetimi.png" alt="Risk Yönetimi Tablosu" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                                    </div>
+
+                                    <h4 style="margin-top: 25px; text-align: center;">ARAŞTIRMA OLANAKLARI</h4>
+                                    <div style="text-align: center; margin: 15px 0;">
+                                        <img src="images/arastirma-olanaklari.png" alt="Araştırma Olanakları Tablosu" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                                    </div>
+                                </div>
+                                <div class="page-footer">5</div>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- 6. KAYNAKLAR -->
-                    <div id="tab-kaynaklar" class="tab-content">
-                        <h3>Kaynaklar</h3>
-                        <ul class="references-list">
-                            <li>Doğan, M. (2013). Bir dinamik matematik yazılımı: Geocebir (GeoGebra). M. Doğan ve E. Karakırık (Eds.) Matematik eğitiminde teknoloji kullanımı içinde, (s. 125-195). Ankara:Nobel-Atlas.</li>
-                            <li>Duval, R. (1999). Representation, vision and visualization: Cognitive functions in mathematical thinking. In Proceedings of the twenty-first annual meeting...</li>
-                            <li>Dikovic, L. (2009). Implementing dynamic mathematics resources with GeoGebra at the college level. International Journal of Emerging Technologies in Learning (iJET), 4(3), 51-54.</li>
-                            <li>Hohenwarter, M. (2003). Geogebra - dynamische geometrie und algebra der ebene. Der Mathematikunterricht, 49 (4), 33–40.</li>
-                            <li>Hohenwarter, M., & Fuchs, K. J. (2005). Combination of dynamic geomtrey, algebra and calculus in the software system GeoGebra.</li>
-                            <li>Hohenwarter, M., & Lavicza, Z. (2007). Mathematics teacher development with ICT: Towards an international GeoGebra institute.</li>
-                            <li>Milli Eğitim Bakanlığı, (2018). Matematik Dersi Öğretim Programı (İlkokul ve Ortaokul 1, 2, 3, 4, 5, 6, 7 ve 8. Sınıflar). Ankara: MEB.</li>
-                        </ul>
-                    </div>
-
-                    <!-- 7. BÜTÇE -->
-                    <div id="tab-butce" class="tab-content">
-                        <h3>BÜTÇE TALEP ÇİZELGESİ</h3>
-                        <h4 style="margin-top: 25px; text-align: center;">BÜTÇE TALEP ÇİZELGESİ</h4>
-                        <div style="text-align: center; margin: 20px 0;">
-                            <img src="images/butce-cizelgesi.png" alt="Bütçe Talep Çizelgesi" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <!-- 6. YAYGIN ETKİ -->
+                        <div class="page">
+                            <div class="page-content">
+                                <h3 class="page-title">Yaygın Etki</h3>
+                                <div class="page-body">
+                                    <h4 style="margin-top: 15px; text-align: center;">BEKLENEN YAYGIN ETKİ TABLOSU</h4>
+                                    <div style="text-align: center; margin: 15px 0;">
+                                        <img src="images/yaygin-etki.png" alt="Yaygın Etki Tablosu" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                                    </div>
+                                    <p>Çalışmamız sonucunda elde edilecek materyallerin, geleceğin öğretmenleri olan sınıf öğretmeni adayları başta olmak üzere geniş bir kitleye hitap etmesi ve geometri öğretiminde karşılaşılan zorlukları dijital teknolojiler ile aşmada önemli bir rehber olması hedeflenmektedir.</p>
+                                </div>
+                                <div class="page-footer">6</div>
+                            </div>
                         </div>
-                        <p class="table-note" style="margin-top: 15px; text-align: left;"><strong>NOT:</strong> Bütçe talebiniz olması halinde hem bu tablonun hem de TÜBİTAK Yönetim Bilgi Sistemi (TYBS) başvuru ekranında karşınıza gelecek olan bütçe alanlarının doldurulması gerekmektedir. Yukardaki tabloda girilen bütçe kalemlerindeki rakamlar ile, TYBS başvuru ekranındaki rakamlar arasında farklılık olması halinde TYBS ekranındaki veriler dikkate alınır ve başvuru sonrasında değiştirilemez.</p>
-                    </div>
 
+                        <!-- 7. KAYNAKLAR -->
+                        <div class="page">
+                            <div class="page-content">
+                                <h3 class="page-title">Kaynaklar</h3>
+                                <div class="page-body">
+                                    <ul class="references-list">
+                                        <li>Doğan, M. (2013). Bir dinamik matematik yazılımı: Geocebir (GeoGebra). M. Doğan ve E. Karakırık (Eds.) Matematik eğitiminde teknoloji kullanımı içinde, (s. 125-195). Ankara:Nobel-Atlas.</li>
+                                        <li>Duval, R. (1999). Representation, vision and visualization: Cognitive functions in mathematical thinking. In Proceedings of the twenty-first annual meeting...</li>
+                                        <li>Dikovic, L. (2009). Implementing dynamic mathematics resources with GeoGebra at the college level. International Journal of Emerging Technologies in Learning (iJET), 4(3), 51-54.</li>
+                                        <li>Hohenwarter, M. (2003). Geogebra - dynamische geometrie und algebra der ebene. Der Mathematikunterricht, 49 (4), 33–40.</li>
+                                        <li>Hohenwarter, M., & Fuchs, K. J. (2005). Combination of dynamic geomtrey, algebra and calculus in the software system GeoGebra.</li>
+                                        <li>Hohenwarter, M., & Lavicza, Z. (2007). Mathematics teacher development with ICT: Towards an international GeoGebra institute.</li>
+                                        <li>Milli Eğitim Bakanlığı, (2018). Matematik Dersi Öğretim Programı (İlkokul ve Ortaokul 1, 2, 3, 4, 5, 6, 7 ve 8. Sınıflar). Ankara: MEB.</li>
+                                    </ul>
+                                </div>
+                                <div class="page-footer">7</div>
+                            </div>
+                        </div>
+
+                        <!-- 8. BÜTÇE -->
+                        <div class="page">
+                            <div class="page-content">
+                                <h3 class="page-title">Bütçe</h3>
+                                <div class="page-body">
+                                    <h4 style="margin-top: 15px; text-align: center;">BÜTÇE TALEP ÇİZELGESİ</h4>
+                                    <div style="text-align: center; margin: 15px 0;">
+                                        <img src="images/butce-cizelgesi.png" alt="Bütçe Talep Çizelgesi" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                                    </div>
+                                    <p class="table-note" style="margin-top: 15px; text-align: left; font-size: 13px;"><strong>NOT:</strong> Bütçe talebiniz olması halinde hem bu tablonun hem de TÜBİTAK Yönetim Bilgi Sistemi (TYBS) başvuru ekranında karşınıza gelecek olan bütçe alanlarının doldurulması gerekmektedir. Yukardaki tabloda girilen bütçe kalemlerindeki rakamlar ile, TYBS başvuru ekranındaki rakamlar arasında farklılık olması halinde TYBS ekranındaki veriler dikkate alınır ve başvuru sonrasında değiştirilemez.</p>
+                                </div>
+                                <div class="page-footer">8</div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -530,5 +533,73 @@
     <!-- Script Dosyaları -->
     <script src="data.js"></script>
     <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+    <script>
+        // Mobil Menü Toggle Mantığı
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        if(mobileBtn) {
+            mobileBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
+        // StPageFlip Entegrasyonu
+        document.addEventListener('DOMContentLoaded', function() {
+            const flipBookContainer = document.getElementById('report-flipbook');
+            if (flipBookContainer && window.StPageFlip) {
+                const pageFlip = new StPageFlip.PageFlip(flipBookContainer, {
+                    width: 450, // base page width
+                    height: 600, // base page height
+                    size: "stretch", // stretch to fill container
+                    minWidth: 300,
+                    maxWidth: 600,
+                    minHeight: 400,
+                    maxHeight: 800,
+                    maxShadowOpacity: 0.5,
+                    showCover: false,
+                    mobileScrollSupport: false,
+                    usePortrait: true // tek sayfa moduna geçmesi için (mobil uyum)
+                });
+
+                // Load pages
+                const pages = document.querySelectorAll('.page');
+                pageFlip.loadFromHTML(pages);
+
+                // Two-way binding with menu
+                const tabBtns = document.querySelectorAll('.report-menu .tab-btn');
+                
+                // Sayfa çevrildiğinde menüyü güncelle
+                pageFlip.on('flip', (e) => {
+                    const currentPage = e.data; // sayfa indexi (0, 1, 2...)
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Butonlardan uygun olanı bul ve active yap
+                    const targetBtn = Array.from(tabBtns).find(b => parseInt(b.getAttribute('data-page')) === currentPage);
+                    if (targetBtn) {
+                        targetBtn.classList.add('active');
+                        // Mobilde menüyü sağa/sola kaydırmak gerekebilir
+                        targetBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    }
+                });
+
+                // Menü butonuna tıklandığında sayfayı çevir
+                tabBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const targetPage = parseInt(btn.getAttribute('data-page'));
+                        pageFlip.turnToPage(targetPage);
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
