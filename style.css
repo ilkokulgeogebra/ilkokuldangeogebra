@@ -789,15 +789,23 @@ ul { list-style: none; }
     background: white;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     transition: transform 0.4s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .guide-image:hover {
     transform: scale(1.03);
 }
 .guide-image img {
-    width: 100%;
+    max-width: 100%;
+    width: auto;
     height: auto;
+    max-height: 400px;
+    object-fit: contain;
     border-radius: 12px;
     display: block;
+    image-rendering: -webkit-optimize-contrast; /* Daha keskin görünüm için */
+    image-rendering: crisp-edges;
 }
 .step-number {
     position: absolute;
