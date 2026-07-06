@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İlkokulda GeoGebra - 2209-A Projesi</title>
     <link rel="icon" type="image/png" href="images/favicon.png?v=2">
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=5">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -132,23 +132,38 @@
             </div>
             
             <div class="report-container flipbook-layout">
-                <!-- Sol Menü -->
+                <!-- Sol Menü (Masaüstü) -->
                 <div class="report-menu">
                     <button class="tab-btn active" data-page="0">Özet & Amaç</button>
                     <button class="tab-btn" data-page="1">Özgün Değer</button>
-                    <button class="tab-btn" data-page="2">Yöntem</button>
-                    <button class="tab-btn" data-page="3">Proje Süreci</button>
-                    <button class="tab-btn" data-page="4">Proje Yönetimi</button>
-                    <button class="tab-btn" data-page="5">Yaygın Etki</button>
-                    <button class="tab-btn" data-page="6">Kaynaklar</button>
-                    <button class="tab-btn" data-page="7">Bütçe</button>
+                    <button class="tab-btn" data-page="4">Yöntem</button>
+                    <button class="tab-btn" data-page="5">Proje Süreci</button>
+                    <button class="tab-btn" data-page="7">Proje Yönetimi</button>
+                    <button class="tab-btn" data-page="10">Yaygın Etki</button>
+                    <button class="tab-btn" data-page="11">Bütçe</button>
+                    <button class="tab-btn" data-page="12">Kaynaklar</button>
                 </div>
                 
+                <!-- Mobil Menü Dropdown -->
+                <div class="mobile-report-menu-container">
+                    <select class="mobile-report-select" id="mobile-report-select">
+                        <option value="0">Özet & Amaç</option>
+                        <option value="1">Özgün Değer</option>
+                        <option value="4">Yöntem</option>
+                        <option value="5">Proje Süreci</option>
+                        <option value="7">Proje Yönetimi</option>
+                        <option value="10">Yaygın Etki</option>
+                        <option value="11">Bütçe</option>
+                        <option value="12">Kaynaklar</option>
+                    </select>
+                </div>
+
                 <!-- Sağ E-Kitap Alanı -->
                 <div class="flip-book-container">
+                    <button class="flip-nav-btn flip-prev" id="flip-prev"><i class="fa-solid fa-chevron-left"></i></button>
                     <div id="report-flipbook">
                         
-                        <!-- 1. ÖZET & AMAÇ -->
+                        <!-- SAYFA 0: ÖZET & AMAÇ -->
                         <div class="page">
                             <div class="page-content">
                                 <h3 class="page-title">Özet ve Amaç</h3>
@@ -167,7 +182,7 @@
                             </div>
                         </div>
 
-                        <!-- 2. ÖZGÜN DEĞER -->
+                        <!-- SAYFA 1: ÖZGÜN DEĞER (Kısım 1) -->
                         <div class="page">
                             <div class="page-content">
                                 <h3 class="page-title">Özgün Değer</h3>
@@ -175,16 +190,33 @@
                                     <p>GeoGebra her kademede kullanılabilecek nokta, doğru, doğru parçası, prizma gibi birçok kavramı içeren ve bu kavramlar arasında dinamik ilişkilerin ortaya çıkmasını sağlayan (Diković, 2009) yaygın kullanılan Java tabanlı bir dinamik geometri yazılımıdır. Salzburg Üniversitesinde Marcus Hohenwarter'ın yüksek lisans tez projesi olarak, ortaokullarda matematik eğitimi için tamamen yeni bir araç geliştirmek amacıyla başladığı çalışmasında öğrencilerin geometri ve cebir arasındaki bağlantıları anlayabileceği GeoGebra geliştirilmiştir (Hohenwarter ve Fuchs, 2004).</p>
                                     <p>Dinamik geometri yazılımları sayesinde geometrik çizimler de yapılabilmektedir (Hohenwarter, 2003). GeoGebra ayrıca öğrencilerin matematiksel kavramları daha derinlemesine anlamalarına katkıda bulunabilecek çoklu gösterimleri sunar (Duval, 1999). Geogebra, internet üzerinden özgürce indirilebilen ve dolayısıyla herhangi bir kısıtlama olmaksızın evde veya okulda kullanılabilen bir yazılımdır. (Hohenwarter ve Lavinca, 2007). GeoGebra, öğrencilerin geometrinin temel elemanlarını oluşturma ve bunlardan yararlanarak yeni geometrik yapıları yapılandırmasına yardımcı olur. Kullanımı kolay bir arayüzü vardır.</p>
                                     
-                                    <div style="text-align: center; margin: 20px 0;">
+                                    <div style="text-align: center; margin: 10px 0;">
                                         <img src="images/geogebra-arayuz.png" alt="GeoGebra Geometri Arayüzü" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                                         <p style="font-size: 13px; color: #6c757d; margin-top: 5px;">Şekil 1: GeoGebra Geometri Arayüzü</p>
                                     </div>
+                                </div>
+                                <div class="page-footer">2</div>
+                            </div>
+                        </div>
 
+                        <!-- SAYFA 2: ÖZGÜN DEĞER (Kısım 2) -->
+                        <div class="page">
+                            <div class="page-content">
+                                <h3 class="page-title">Özgün Değer (Devamı)</h3>
+                                <div class="page-body">
                                     <p>Türkiye'de GeoGebra ile ilgili çalışmalar 2005 yılında başlamıştır. 2009 yılında da GeoGebra'nın kullanım kılavuzu Türkçe'ye çevrilmiştir (Doğan, 2013). Türkiye'de Ankara ve İstanbul'da olmak üzere iki farklı GeoGebra enstitüsü kurulmuştur. Eğitim fakültelerinde GeoGebra dersleri, matematik ders kitaplarında GeoGebra ile ilgili uygulamalara yer verilmiştir. Birçok makale, proje, yüksek lisans ve doktora tez çalışmaları yapılmıştır (Doğan, 2013).</p>
                                     <p>İlkokul 4. Sınıf simetri konusu kazanımına yönelik 5.sınıf düzeyinde yapılan çalışmada GeoGebra'nın akademik başarıyı arttırdığı sonucuna ulaşılmıştır. Öğrenciler bilgisayar destekli öğretimle işlenen dersleri diğer yöntemlerle işlenen derslere göre daha kolay anlaşılır, faydalı, eğlenceli ve zevkli bulmuşlardır. Öğrenciler derslerde bilgisayar kullanımını gerekli bulmaktadır ve bundan sonra da bu yazılımla ders çalışacaklarını ifade etmişlerdir (Özçakır Sümen, 2013).</p>
                                     <p>GeoGebra'nın yaygın kullanılmasının sebebi ücretsiz olması, Türkçe dil özelliğinin olması, hazırlanan materyallerin diğer kullanıcılarla paylaşılması ve bilgisayara kurulumuna gerek kalmadan kolayca materyallere ulaşılabilmesi gibi sebepler sayılabilir.</p>
+                                </div>
+                                <div class="page-footer">3</div>
+                            </div>
+                        </div>
 
-                                    <h4 style="margin-top:20px;">Amaç ve Hedefler</h4>
+                        <!-- SAYFA 3: ÖZGÜN DEĞER (Amaç ve Hedefler) -->
+                        <div class="page">
+                            <div class="page-content">
+                                <h3 class="page-title">Amaç ve Hedefler</h3>
+                                <div class="page-body">
                                     <p>Bu proje, sınıf öğretmenlerinin sınıf içinde matematik derslerinde kullanabileceği ilkokul matematik öğretim programı geometri kazanımlarının öğretiminde kullanılabilecek geogebra etkinliklerini kapsayan etkileşimli kılavuz kitap hazırlamayı amaçlamaktadır. Bu uygulama sınıf öğretmeni adaylarına ve sınıf öğretmenlerine sınıf içinde matematik dersinde kullanılabileceği GeoGebra'yı tanıma ve tanıtma fırsatı sunacaktır.</p>
                                     <p>Bu çalışmada amaç GeoGebra etkinliklerinin ilkokul matematik öğretim programı kazanımları ile eşlemektir. Bu amaç doğrultusunda, projenin hedefleri aşağıdaki gibidir:</p>
                                     <ul class="custom-list">
@@ -192,11 +224,11 @@
                                         <li><i class="fa-solid fa-check"></i> Sınıf öğretmeni adaylarına ilkokul matematik öğretim programı kazanımları ile GeoGebra etkinliklerinin eşleştirildiği bir kitabı hazırlamak.</li>
                                     </ul>
                                 </div>
-                                <div class="page-footer">2</div>
+                                <div class="page-footer">4</div>
                             </div>
                         </div>
 
-                        <!-- 3. YÖNTEM -->
+                        <!-- SAYFA 4: YÖNTEM -->
                         <div class="page">
                             <div class="page-content">
                                 <h3 class="page-title">Araştırma Yöntemi</h3>
@@ -206,23 +238,32 @@
                                     <p>Elde edilen veriler betimsel analiz tekniği bakımından analizi yapılarak sistematik bir şekilde bulgular ortaya konulmuştur. Betimsel analiz bakımından veriler önceden literatürde bulunan temalar dikkate alınarak kodlanır (Yıldırım & Şimşek, 2006:224).</p>
                                     <p>Elde edilen verilerin geçerlik çalışmaları alanlarında uzmanlar tarafından görüşler alınacak ve güvenirlik çalışması için ise Miles ve Huberman'ın (1994) formülünden yararlanacaktır.</p>
                                 </div>
-                                <div class="page-footer">3</div>
+                                <div class="page-footer">5</div>
                             </div>
                         </div>
 
-                        <!-- 4. PROJE SÜRECİ -->
+                        <!-- SAYFA 5: PROJE SÜRECİ (Kısım 1) -->
                         <div class="page">
                             <div class="page-content">
                                 <h3 class="page-title">Proje Süreci</h3>
                                 <div class="page-body">
                                     <p>Bu proje dört aşamada gerçekleştirilecektir. İlk aşamada araştırmacılar GeoGebra'nın kullanımını öğrenecektir. İkinci aşamada geometri kazanımlarına uygun etkinliklerin araştırılacaktır. Üçüncü aşamada geometri kazanımlarına uygun etkinlik kartları hazırlanacaktır. Dördüncü ve son aşamada kitap tasarlanacaktır.</p>
 
-                                    <h4 style="margin-top: 20px;">Uygulama Süreci</h4>
-                                    <div style="text-align: center; margin: 15px 0;">
+                                    <h4 style="margin-top: 10px;">Uygulama Süreci</h4>
+                                    <div style="text-align: center; margin: 10px 0;">
                                         <img src="images/proje-sureci.png" alt="Proje Uygulama Süreci" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                                     </div>
-                                    
-                                    <div class="timeline" style="margin-top:20px;">
+                                </div>
+                                <div class="page-footer">6</div>
+                            </div>
+                        </div>
+
+                        <!-- SAYFA 6: PROJE SÜRECİ (Kısım 2) -->
+                        <div class="page">
+                            <div class="page-content">
+                                <h3 class="page-title">Proje Süreci (Devamı)</h3>
+                                <div class="page-body">
+                                    <div class="timeline" style="margin-top:10px;">
                                         <div class="timeline-item">
                                             <div class="dot">1</div>
                                             <h4>1. Aşama</h4>
@@ -245,50 +286,83 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="page-footer">4</div>
+                                <div class="page-footer">7</div>
                             </div>
                         </div>
 
-                        <!-- 5. PROJE YÖNETİMİ -->
+                        <!-- SAYFA 7: PROJE YÖNETİMİ (İş Zaman Çizelgesi) -->
                         <div class="page">
                             <div class="page-content">
                                 <h3 class="page-title">Proje Yönetimi</h3>
                                 <div class="page-body">
-                                    <h4 style="margin-top: 15px; text-align: center;">İŞ-ZAMAN ÇİZELGESİ</h4>
+                                    <h4 style="margin-top: 10px; text-align: center;">İŞ-ZAMAN ÇİZELGESİ</h4>
                                     <div style="text-align: center; margin: 15px 0;">
                                         <img src="images/is-zaman-cizelgesi.png" alt="İş-Zaman Çizelgesi" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                                     </div>
+                                </div>
+                                <div class="page-footer">8</div>
+                            </div>
+                        </div>
 
-                                    <h4 style="margin-top: 25px; text-align: center;">RİSK YÖNETİMİ TABLOSU</h4>
+                        <!-- SAYFA 8: PROJE YÖNETİMİ (Risk) -->
+                        <div class="page">
+                            <div class="page-content">
+                                <h3 class="page-title">Risk Yönetimi</h3>
+                                <div class="page-body">
+                                    <h4 style="margin-top: 10px; text-align: center;">RİSK YÖNETİMİ TABLOSU</h4>
                                     <div style="text-align: center; margin: 15px 0;">
                                         <img src="images/risk-yonetimi.png" alt="Risk Yönetimi Tablosu" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                                     </div>
+                                </div>
+                                <div class="page-footer">9</div>
+                            </div>
+                        </div>
 
-                                    <h4 style="margin-top: 25px; text-align: center;">ARAŞTIRMA OLANAKLARI</h4>
+                        <!-- SAYFA 9: PROJE YÖNETİMİ (Araştırma Olanakları) -->
+                        <div class="page">
+                            <div class="page-content">
+                                <h3 class="page-title">Araştırma Olanakları</h3>
+                                <div class="page-body">
+                                    <h4 style="margin-top: 10px; text-align: center;">ARAŞTIRMA OLANAKLARI</h4>
                                     <div style="text-align: center; margin: 15px 0;">
                                         <img src="images/arastirma-olanaklari.png" alt="Araştırma Olanakları Tablosu" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                                     </div>
                                 </div>
-                                <div class="page-footer">5</div>
+                                <div class="page-footer">10</div>
                             </div>
                         </div>
 
-                        <!-- 6. YAYGIN ETKİ -->
+                        <!-- SAYFA 10: YAYGIN ETKİ -->
                         <div class="page">
                             <div class="page-content">
                                 <h3 class="page-title">Yaygın Etki</h3>
                                 <div class="page-body">
-                                    <h4 style="margin-top: 15px; text-align: center;">BEKLENEN YAYGIN ETKİ TABLOSU</h4>
+                                    <h4 style="margin-top: 10px; text-align: center;">BEKLENEN YAYGIN ETKİ TABLOSU</h4>
                                     <div style="text-align: center; margin: 15px 0;">
                                         <img src="images/yaygin-etki.png" alt="Yaygın Etki Tablosu" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                                     </div>
                                     <p>Çalışmamız sonucunda elde edilecek materyallerin, geleceğin öğretmenleri olan sınıf öğretmeni adayları başta olmak üzere geniş bir kitleye hitap etmesi ve geometri öğretiminde karşılaşılan zorlukları dijital teknolojiler ile aşmada önemli bir rehber olması hedeflenmektedir.</p>
                                 </div>
-                                <div class="page-footer">6</div>
+                                <div class="page-footer">11</div>
                             </div>
                         </div>
 
-                        <!-- 7. KAYNAKLAR -->
+                        <!-- SAYFA 11: BÜTÇE -->
+                        <div class="page">
+                            <div class="page-content">
+                                <h3 class="page-title">Bütçe</h3>
+                                <div class="page-body">
+                                    <h4 style="margin-top: 10px; text-align: center;">BÜTÇE TALEP ÇİZELGESİ</h4>
+                                    <div style="text-align: center; margin: 15px 0;">
+                                        <img src="images/butce-cizelgesi.png" alt="Bütçe Talep Çizelgesi" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                                    </div>
+                                    <p class="table-note" style="margin-top: 10px; text-align: left; font-size: 13px;"><strong>NOT:</strong> Bütçe talebiniz olması halinde hem bu tablonun hem de TÜBİTAK Yönetim Bilgi Sistemi (TYBS) başvuru ekranında karşınıza gelecek olan bütçe alanlarının doldurulması gerekmektedir. Yukardaki tabloda girilen bütçe kalemlerindeki rakamlar ile, TYBS başvuru ekranındaki rakamlar arasında farklılık olması halinde TYBS ekranındaki veriler dikkate alınır ve başvuru sonrasında değiştirilemez.</p>
+                                </div>
+                                <div class="page-footer">12</div>
+                            </div>
+                        </div>
+
+                        <!-- SAYFA 12: KAYNAKLAR -->
                         <div class="page">
                             <div class="page-content">
                                 <h3 class="page-title">Kaynaklar</h3>
@@ -300,29 +374,15 @@
                                         <li>Hohenwarter, M. (2003). Geogebra - dynamische geometrie und algebra der ebene. Der Mathematikunterricht, 49 (4), 33–40.</li>
                                         <li>Hohenwarter, M., & Fuchs, K. J. (2005). Combination of dynamic geomtrey, algebra and calculus in the software system GeoGebra.</li>
                                         <li>Hohenwarter, M., & Lavicza, Z. (2007). Mathematics teacher development with ICT: Towards an international GeoGebra institute.</li>
-                                        <li>Milli Eğitim Bakanlığı, (2018). Matematik Dersi Öğretim Programı (İlkokul ve Ortaokul 1, 2, 3, 4, 5, 6, 7 ve 8. Sınıflar). Ankara: MEB.</li>
+                                        <li>Milli Eğitim Bakanlığı, (2018). Matematik Dersi Öğretim Programı (İlkokul ve Ortaokul 1, 2, 3, 4, 5, 6, 7 ve 8. Sınıflar). Ankara: MEB.</li>
                                     </ul>
                                 </div>
-                                <div class="page-footer">7</div>
-                            </div>
-                        </div>
-
-                        <!-- 8. BÜTÇE -->
-                        <div class="page">
-                            <div class="page-content">
-                                <h3 class="page-title">Bütçe</h3>
-                                <div class="page-body">
-                                    <h4 style="margin-top: 15px; text-align: center;">BÜTÇE TALEP ÇİZELGESİ</h4>
-                                    <div style="text-align: center; margin: 15px 0;">
-                                        <img src="images/butce-cizelgesi.png" alt="Bütçe Talep Çizelgesi" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                                    </div>
-                                    <p class="table-note" style="margin-top: 15px; text-align: left; font-size: 13px;"><strong>NOT:</strong> Bütçe talebiniz olması halinde hem bu tablonun hem de TÜBİTAK Yönetim Bilgi Sistemi (TYBS) başvuru ekranında karşınıza gelecek olan bütçe alanlarının doldurulması gerekmektedir. Yukardaki tabloda girilen bütçe kalemlerindeki rakamlar ile, TYBS başvuru ekranındaki rakamlar arasında farklılık olması halinde TYBS ekranındaki veriler dikkate alınır ve başvuru sonrasında değiştirilemez.</p>
-                                </div>
-                                <div class="page-footer">8</div>
+                                <div class="page-footer">13</div>
                             </div>
                         </div>
 
                     </div>
+                    <button class="flip-nav-btn flip-next" id="flip-next"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
@@ -557,47 +617,68 @@
             const flipBookContainer = document.getElementById('report-flipbook');
             if (flipBookContainer && window.StPageFlip) {
                 const pageFlip = new StPageFlip.PageFlip(flipBookContainer, {
-                    width: 450, // base page width
-                    height: 600, // base page height
-                    size: "stretch", // stretch to fill container
+                    width: 450, 
+                    height: 550, 
+                    size: "fixed", // Kesinlikle sabit yükseklik (aşağı uzamaz)
                     minWidth: 300,
                     maxWidth: 600,
                     minHeight: 400,
-                    maxHeight: 800,
+                    maxHeight: 600,
                     maxShadowOpacity: 0.5,
                     showCover: false,
                     mobileScrollSupport: false,
-                    usePortrait: true // tek sayfa moduna geçmesi için (mobil uyum)
+                    usePortrait: true, // Mobilde tek sayfa
+                    flippingTime: 800
                 });
 
-                // Load pages
+                // Sayfaları yükle
                 const pages = document.querySelectorAll('.page');
                 pageFlip.loadFromHTML(pages);
 
-                // Two-way binding with menu
+                // Menü Senkronizasyonu
                 const tabBtns = document.querySelectorAll('.report-menu .tab-btn');
+                const mobileSelect = document.getElementById('mobile-report-select');
                 
+                // Kitap sayfaları ile menü başlıklarının eşleşme haritası
+                const pageToMenuMap = {
+                    0: 0, 1: 1, 2: 1, 3: 1, 4: 4, 5: 5, 6: 5, 7: 7, 8: 7, 9: 7, 10: 10, 11: 11, 12: 12
+                };
+
                 // Sayfa çevrildiğinde menüyü güncelle
                 pageFlip.on('flip', (e) => {
-                    const currentPage = e.data; // sayfa indexi (0, 1, 2...)
-                    tabBtns.forEach(b => b.classList.remove('active'));
+                    const currentPage = e.data;
+                    const menuTargetPage = pageToMenuMap[currentPage] !== undefined ? pageToMenuMap[currentPage] : 0;
                     
-                    // Butonlardan uygun olanı bul ve active yap
-                    const targetBtn = Array.from(tabBtns).find(b => parseInt(b.getAttribute('data-page')) === currentPage);
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    const targetBtn = Array.from(tabBtns).find(b => parseInt(b.getAttribute('data-page')) === menuTargetPage);
                     if (targetBtn) {
                         targetBtn.classList.add('active');
-                        // Mobilde menüyü sağa/sola kaydırmak gerekebilir
-                        targetBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    }
+                    if (mobileSelect) {
+                        mobileSelect.value = menuTargetPage.toString();
                     }
                 });
 
-                // Menü butonuna tıklandığında sayfayı çevir
+                // Masaüstü menüye tıklandığında sayfaya dön
                 tabBtns.forEach(btn => {
                     btn.addEventListener('click', () => {
                         const targetPage = parseInt(btn.getAttribute('data-page'));
                         pageFlip.turnToPage(targetPage);
                     });
                 });
+                
+                // Mobil açılır menü değiştiğinde sayfaya dön
+                if (mobileSelect) {
+                    mobileSelect.addEventListener('change', (e) => {
+                        pageFlip.turnToPage(parseInt(e.target.value));
+                    });
+                }
+
+                // Navigasyon Okları
+                const btnPrev = document.getElementById('flip-prev');
+                const btnNext = document.getElementById('flip-next');
+                if (btnPrev) btnPrev.addEventListener('click', () => pageFlip.flipPrev());
+                if (btnNext) btnNext.addEventListener('click', () => pageFlip.flipNext());
             }
         });
     </script>
