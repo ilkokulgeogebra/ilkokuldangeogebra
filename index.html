@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İlkokulda GeoGebra - 2209-A Projesi</title>
     <link rel="icon" type="image/png" href="images/favicon.png?v=2">
-    <link rel="stylesheet" href="style.css?v=16">
+    <link rel="stylesheet" href="style.css?v=17">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -541,7 +541,8 @@
                             
                             for (let el of elements) {
                                 measureBody.appendChild(el.cloneNode(true));
-                                if (measureBody.scrollHeight > measureBody.clientHeight && measureBody.children.length > 1) {
+                                // Sabit yükseklik sınırı koyuyoruz (700px sayfa - 150px başlık/altbilgi = 550px)
+                                if (measureBody.scrollHeight > 500 && measureBody.children.length > 1) {
                                     measureBody.lastElementChild.remove();
                                     createPage();
                                     measureBody.appendChild(el.cloneNode(true));
