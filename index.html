@@ -609,20 +609,58 @@
                             `;
                             flipBookContainer.appendChild(pageDiv);
                             
-                            // Scroll indicator logic
+                            // Scroll indicator and Touch logic
                             setTimeout(() => {
                                 let bodyEl = pageDiv.querySelector('.page-body');
+                                
+                                // 1. Touch Conflict Resolver (Dikey Kaydırma Önceliği)
+                                let startX = 0;
+                                let startY = 0;
+                                
+                                bodyEl.addEventListener('touchstart', (e) => {
+                                    startX = e.touches[0].clientX;
+                                    startY = e.touches[0].clientY;
+                                }, { passive: true });
+                                
+                                bodyEl.addEventListener('touchmove', (e) => {
+                                    if(!e.touches || e.touches.length === 0) return;
+                                    let currentX = e.touches[0].clientX;
+                                    let currentY = e.touches[0].clientY;
+                                    
+                                    let deltaX = currentX - startX;
+                                    let deltaY = currentY - startY;
+                                    
+                                    // Eğer dikey hareket yatay hareketten fazlaysa, bu bir scroll işlemidir.
+                                    // Flipbook'un bunu yatay sayfa çevirme olarak algılamasını engelle (stopPropagation)
+                                    if (Math.abs(deltaY) > Math.abs(deltaX)) {
+                                        e.stopPropagation();
+                                    }
+                                }, { passive: false });
+
+                                // 2. Devamı Aşağıda Göstergesi ve Tıklama (Smooth Scroll)
                                 if (bodyEl.scrollHeight > bodyEl.clientHeight + 10) {
                                     let indicator = document.createElement('div');
                                     indicator.className = 'scroll-indicator';
                                     indicator.innerHTML = '<i class="fas fa-chevron-down"></i> Devamı Aşağıda';
+                                    indicator.style.cursor = 'pointer'; // Tıklanabilir olduğunu belli et
                                     pageDiv.querySelector('.page-content').appendChild(indicator);
+                                    
+                                    // Butona basılınca pürüzsüz aşağı kaydır
+                                    indicator.addEventListener('click', (e) => {
+                                        e.stopPropagation(); // Sayfa çevirmeyi engelle
+                                        bodyEl.scrollBy({ top: bodyEl.clientHeight * 0.8, behavior: 'smooth' });
+                                    });
+                                    // Dokunmayı da engelle
+                                    indicator.addEventListener('touchstart', (e) => e.stopPropagation(), { passive: true });
+                                    indicator.addEventListener('touchmove', (e) => e.stopPropagation(), { passive: false });
                                     
                                     bodyEl.addEventListener('scroll', () => {
                                         if (bodyEl.scrollTop + bodyEl.clientHeight >= bodyEl.scrollHeight - 15) {
                                             indicator.style.opacity = '0';
+                                            indicator.style.pointerEvents = 'none';
                                         } else {
                                             indicator.style.opacity = '1';
+                                            indicator.style.pointerEvents = 'auto';
                                         }
                                     });
                                 }
