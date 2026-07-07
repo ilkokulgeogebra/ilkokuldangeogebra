@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İlkokulda GeoGebra - 2209-A Projesi</title>
     <link rel="icon" type="image/png" href="images/favicon.png?v=2">
-    <link rel="stylesheet" href="style.css?v=22">
+    <link rel="stylesheet" href="style.css?v=23">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -502,6 +502,25 @@
                                 </div>
                             `;
                             flipBookContainer.appendChild(pageDiv);
+                            
+                            // Scroll indicator logic
+                            setTimeout(() => {
+                                let bodyEl = pageDiv.querySelector('.page-body');
+                                if (bodyEl.scrollHeight > bodyEl.clientHeight + 10) {
+                                    let indicator = document.createElement('div');
+                                    indicator.className = 'scroll-indicator';
+                                    indicator.innerHTML = '<i class="fas fa-chevron-down"></i> Devamı Aşağıda';
+                                    pageDiv.querySelector('.page-content').appendChild(indicator);
+                                    
+                                    bodyEl.addEventListener('scroll', () => {
+                                        if (bodyEl.scrollTop + bodyEl.clientHeight >= bodyEl.scrollHeight - 15) {
+                                            indicator.style.opacity = '0';
+                                        } else {
+                                            indicator.style.opacity = '1';
+                                        }
+                                    });
+                                }
+                            }, 100);
                             
                             window.pageToMenuMap[globalPageCount] = menuId;
                             globalPageCount++;
