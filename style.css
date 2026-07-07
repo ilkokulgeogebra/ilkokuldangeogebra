@@ -1195,3 +1195,6 @@ ul { list-style: none; }
     
     .section-padding { padding: 60px 0; }
 }
+
+/* Mobile Touch Fix */
+.flip-book-container *, .stf__wrapper, .page, .page-body { touch-action: pan-y !important; }
