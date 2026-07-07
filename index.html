@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İlkokulda GeoGebra - 2209-A Projesi</title>
     <link rel="icon" type="image/png" href="images/favicon.png?v=2">
-    <link rel="stylesheet" href="style.css?v=21">
+    <link rel="stylesheet" href="style.css?v=22">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -480,20 +480,9 @@
                     let loaded = 0;
                     
                     function paginateAndInit() {
-                        // Ölçüm Kutusunu DOM'a ekle
-                        const measureBox = document.createElement('div');
-                        measureBox.className = 'page';
-                        measureBox.style.position = 'absolute';
-                        measureBox.style.visibility = 'hidden';
-                        measureBox.style.pointerEvents = 'none';
-                        measureBox.style.zIndex = '-9999';
-                        
                         let isMobile = window.innerWidth < 768;
                         const PAGE_WIDTH = 550;
                         const PAGE_HEIGHT = 700;
-                        measureBox.style.width = PAGE_WIDTH + 'px';
-                        measureBox.style.height = PAGE_HEIGHT + 'px';
-                        document.body.appendChild(measureBox);
                         
                         window.pageToMenuMap = {};
                         let globalPageCount = 0;
@@ -501,93 +490,22 @@
                         sections.forEach(sec => {
                             let title = sec.getAttribute('data-title');
                             let menuId = parseInt(sec.getAttribute('data-menu'));
-                            let elements = Array.from(sec.children);
                             
-                            let partNum = 1;
-                            let measureBody = null;
-                            let realBody = null;
+                            let pageDiv = document.createElement('div');
+                            pageDiv.className = 'page';
                             
-                            function createPage() {
-                                let pageDiv = document.createElement('div');
-                                pageDiv.className = 'page';
-                                let titleText = title + (partNum > 1 ? ` (${partNum})` : '');
-                                
-                                pageDiv.innerHTML = `
-                                    <div class="page-content">
-                                        <h3 class="page-title">${titleText}</h3>
-                                        <div class="page-body"></div>
-                                        <div class="page-footer">${globalPageCount + 1}</div>
-                                    </div>
-                                `;
-                                flipBookContainer.appendChild(pageDiv);
-                                
-                                measureBox.innerHTML = pageDiv.innerHTML;
-                                measureBody = measureBox.querySelector('.page-body');
-                                realBody = pageDiv.querySelector('.page-body');
-                                
-                                window.pageToMenuMap[globalPageCount] = menuId;
-                                globalPageCount++;
-                                partNum++;
-                            }
+                            pageDiv.innerHTML = `
+                                <div class="page-content">
+                                    <h3 class="page-title">${title}</h3>
+                                    <div class="page-body">${sec.innerHTML}</div>
+                                    <div class="page-footer">${globalPageCount + 1}</div>
+                                </div>
+                            `;
+                            flipBookContainer.appendChild(pageDiv);
                             
-                            createPage();
-                            
-                            function appendWithSplit(el) {
-                                // Eğer eleman resim vs ise doğrudan ekle ve taşarsa yeni sayfaya at
-                                if (el.nodeName !== 'P') {
-                                    measureBody.appendChild(el.cloneNode(true));
-                                    if (measureBody.scrollHeight > 500 && measureBody.children.length > 1) {
-                                        measureBody.lastElementChild.remove();
-                                        createPage();
-                                        measureBody.appendChild(el.cloneNode(true));
-                                        realBody.appendChild(el.cloneNode(true));
-                                    } else {
-                                        realBody.appendChild(el.cloneNode(true));
-                                    }
-                                    return;
-                                }
-
-                                // Eğer P ise ve çok uzunsa, kelime kelime bölerek sayfalara dağıt
-                                let words = el.innerHTML.split(' ');
-                                let currentP = document.createElement('p');
-                                measureBody.appendChild(currentP);
-                                let currentRealP = document.createElement('p');
-                                realBody.appendChild(currentRealP);
-                                
-                                let currentWords = [];
-                                
-                                for (let i = 0; i < words.length; i++) {
-                                    currentWords.push(words[i]);
-                                    currentP.innerHTML = currentWords.join(' ') + ' ';
-                                    
-                                    if (measureBody.scrollHeight > 500) {
-                                        // Bu kelime taştı! Geri al.
-                                        currentWords.pop();
-                                        currentP.innerHTML = currentWords.join(' ') + ' ';
-                                        currentRealP.innerHTML = currentP.innerHTML;
-                                        
-                                        // Yeni sayfa oluştur
-                                        createPage();
-                                        
-                                        // Yeni sayfada yeni bir P başlat ve kelimeyi oraya koy
-                                        currentP = document.createElement('p');
-                                        measureBody.appendChild(currentP);
-                                        currentRealP = document.createElement('p');
-                                        realBody.appendChild(currentRealP);
-                                        
-                                        currentWords = [words[i]];
-                                        currentP.innerHTML = currentWords.join(' ') + ' ';
-                                    }
-                                }
-                                currentRealP.innerHTML = currentP.innerHTML;
-                            }
-                            
-                            for (let el of elements) {
-                                appendWithSplit(el);
-                            }
+                            window.pageToMenuMap[globalPageCount] = menuId;
+                            globalPageCount++;
                         });
-                        
-                        document.body.removeChild(measureBox);
                         
                         // --- StPageFlip Başlat ---
                         const pageFlip = new PageFlipClass(flipBookContainer, {
